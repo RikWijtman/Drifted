@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e728c32843353f43af275d980015ace, type: 3}
+  m_Name: Japeron
+  m_EditorClassIdentifier: 
+  fishName: Bakston
+  description: A very poisonous fish, one bite can easily kill you. But when you
+    prepare it right, it's delicious.
+  rarity: 1
+  fishSprite: {fileID: 21300000, guid: d5e64bb897d70664ea5974b24ddcd70c, type: 3}
+  nutrition: 100
+  regeneration: 0
+  shield: 0
+  fishSpeed: 110
+  fishWeight: 0.8
+  wildness: 1
+  fishSize: 100
+  effect:
+  - effect: 5
+    effectStrength: 3
+    effectDuration: 10

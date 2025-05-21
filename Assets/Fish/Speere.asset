@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e728c32843353f43af275d980015ace, type: 3}
+  m_Name: Speere
+  m_EditorClassIdentifier: 
+  fishName: Speere
+  description: A basic fish that's really fast and hard to catch, it's shaped like
+    a lightning bolt.
+  rarity: 0
+  fishSprite: {fileID: 21300000, guid: 73ca7c5235eb4ad4cb4db318161e1f44, type: 3}
+  nutrition: 5
+  regeneration: 0
+  shield: 0
+  fishSpeed: 130
+  fishWeight: 1.4
+  wildness: 5
+  fishSize: 80
+  effect:
+  - effect: 1
+    effectStrength: 1
+    effectDuration: 30

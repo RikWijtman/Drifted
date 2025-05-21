@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ba04016d34fe148853ca251618492b, type: 3}
+  m_Name: Chomper
+  m_EditorClassIdentifier: 
+  enemyName: Chomper
+  description: A small dog like creature that's highly aggresive, and have a very
+    high bite froce. they're very common around the central area.
+  enemySprite: {fileID: 144461308, guid: 423a501c7bf50254cb2ee3c67dd5e599, type: 3}
+  difficulty: 1
+  health: 20
+  speed: 4.5
+  detectionRange: 10
+  canCluster: 1
+  hostility: 0
+  moveset:
+  - moveName: Bite
+    moveType: 0
+    damage: 5
+    cooldown: 2
+    probability: 80
+    baseProbability: 80
+    moveRange: 1
+    chargeTime: 0
+    attackEffect: []
+    moveAnim: {fileID: 7400000, guid: d5dc0639e91667a43829bd4287d33778, type: 2}
+    blockPercentage: 0
+    blockTime: 3
+    dashSpeed: 0
+    dashDuration: 0
+    dodgeSpeed: 10
+    dodgeDuration: 0.2
+    healingAmount: 0
+    speedBuff: 0
+    attackBuff: 0
+    cooldownBuff: 0
+    projectile: {fileID: 0}
+  - moveName: Bash
+    moveType: 2
+    damage: 5
+    cooldown: 10
+    probability: 22.680412
+    baseProbability: 20
+    moveRange: 1
+    chargeTime: 0
+    attackEffect: []
+    moveAnim: {fileID: 7400000, guid: 2e3b20d0687f3a049be9f66bea477b09, type: 2}
+    blockPercentage: 0
+    blockTime: 3
+    dashSpeed: 10
+    dashDuration: 0.15
+    dodgeSpeed: 10
+    dodgeDuration: 0.2
+    healingAmount: 0
+    speedBuff: 0
+    attackBuff: 0
+    cooldownBuff: 0
+    projectile: {fileID: 0}

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e728c32843353f43af275d980015ace, type: 3}
+  m_Name: Basin
+  m_EditorClassIdentifier: 
+  fishName: Basin
+  description: A common fish, it has spikes running down it's body to protect itself.
+  rarity: 0
+  fishSprite: {fileID: 21300000, guid: d4a76cff6b5de444daa56fbb7b9da69d, type: 3}
+  nutrition: 5
+  regeneration: 0
+  shield: 0
+  fishSpeed: 80
+  fishWeight: 0.6
+  wildness: 3
+  fishSize: 110
+  effect:
+  - effect: 1
+    effectStrength: 1
+    effectDuration: 5
+  - effect: 2
+    effectStrength: 1
+    effectDuration: 5

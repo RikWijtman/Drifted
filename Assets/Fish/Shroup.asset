@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e728c32843353f43af275d980015ace, type: 3}
+  m_Name: Shroup
+  m_EditorClassIdentifier: 
+  fishName: Shroup
+  description: A small fish, it spins it body to accelerate to extreme speeds.
+  rarity: 1
+  fishSprite: {fileID: 21300000, guid: 15ea5c38b4b6697459d9d51cb9f4c925, type: 3}
+  nutrition: 10
+  regeneration: 0
+  shield: 0
+  fishSpeed: 150
+  fishWeight: 2.2
+  wildness: 1.8
+  fishSize: 60
+  effect:
+  - effect: 1
+    effectStrength: 3
+    effectDuration: 30

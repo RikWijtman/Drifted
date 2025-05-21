@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e728c32843353f43af275d980015ace, type: 3}
+  m_Name: Butrgee
+  m_EditorClassIdentifier: 
+  fishName: Butrgee
+  description: A beautiful looking fish, it can inflate itself to scare away predators
+  rarity: 3
+  fishSprite: {fileID: 21300000, guid: 92e68d60b9182a041b204653235dea3d, type: 3}
+  nutrition: 0
+  regeneration: 0
+  shield: 0
+  fishSpeed: 100
+  fishWeight: 0.8
+  wildness: 5
+  fishSize: 80
+  effect:
+  - effect: 3
+    effectStrength: 3
+    effectDuration: 10
+  - effect: 2
+    effectStrength: 3
+    effectDuration: 10
+  - effect: 1
+    effectStrength: 3
+    effectDuration: 10

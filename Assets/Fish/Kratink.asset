@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e728c32843353f43af275d980015ace, type: 3}
+  m_Name: Kratink
+  m_EditorClassIdentifier: 
+  fishName: Kratink
+  description: A small fish that only lives in some parts of The Central Area, eating
+    it strengthens your bones.
+  rarity: 3
+  fishSprite: {fileID: 21300000, guid: 965b63b9204eb1543a4488ed1365196c, type: 3}
+  nutrition: 0
+  regeneration: 0
+  shield: 10
+  fishSpeed: 120
+  fishWeight: 2
+  wildness: 4
+  fishSize: 70
+  effect:
+  - effect: 3
+    effectStrength: 3
+    effectDuration: 60

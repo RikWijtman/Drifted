@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e728c32843353f43af275d980015ace, type: 3}
+  m_Name: Warstron
+  m_EditorClassIdentifier: 
+  fishName: Warstron
+  description: It's body is very slimy, but using this slime on yourself will protect
+    you from poison.
+  rarity: 1
+  fishSprite: {fileID: 21300000, guid: 451633a08b9a4f74eb0c78be50a2bfb4, type: 3}
+  nutrition: 5
+  regeneration: 0
+  shield: 0
+  fishSpeed: 60
+  fishWeight: 0.3
+  wildness: 3
+  fishSize: 70
+  effect:
+  - effect: 10
+    effectStrength: 1
+    effectDuration: 60

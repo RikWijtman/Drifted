@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ba04016d34fe148853ca251618492b, type: 3}
+  m_Name: Stoker
+  m_EditorClassIdentifier: 
+  enemyName: Stoker
+  description: A parasite living in the beast, it uses it's big claws to dig trough
+    the flesh of the beast and feast on it.
+  enemySprite: {fileID: -1912032790, guid: 274000845ce382540b5a28dfaba0b88b, type: 3}
+  difficulty: 2
+  health: 60
+  speed: 4.5
+  detectionRange: 10
+  canCluster: 1
+  hostility: 0
+  moveset:
+  - moveName: Slash
+    moveType: 0
+    damage: 10
+    cooldown: 3
+    probability: 50
+    baseProbability: 50
+    moveRange: 1.5
+    chargeTime: 0
+    attackEffect: []
+    moveAnim: {fileID: 7400000, guid: 71da1f95f32bb4b4f87cb09c451d5004, type: 2}
+    blockPercentage: 0
+    blockTime: 2
+    dashSpeed: 0
+    dashDuration: 0
+    dodgeSpeed: 10
+    dodgeDuration: 0.2
+    healingAmount: 0
+    speedBuff: 0
+    attackBuff: 0
+    cooldownBuff: 0
+    projectile: {fileID: 0}
+  - moveName: Charged
+    moveType: 0
+    damage: 25
+    cooldown: 5
+    probability: 0
+    baseProbability: 20
+    moveRange: 1.5
+    chargeTime: 2
+    attackEffect: []
+    moveAnim: {fileID: 7400000, guid: bcd7220b8ba7e7b4e928525eb4fbb0f8, type: 2}
+    blockPercentage: 0
+    blockTime: 2
+    dashSpeed: 0
+    dashDuration: 0
+    dodgeSpeed: 10
+    dodgeDuration: 0.2
+    healingAmount: 0
+    speedBuff: 0
+    attackBuff: 0
+    cooldownBuff: 0
+    projectile: {fileID: 0}
+  - moveName: Dodge
+    moveType: 3
+    damage: 0
+    cooldown: 10
+    probability: 0
+    baseProbability: 20
+    moveRange: 1.5
+    chargeTime: 0
+    attackEffect: []
+    moveAnim: {fileID: 0}
+    blockPercentage: 0
+    blockTime: 2
+    dashSpeed: 20
+    dashDuration: 0.4
+    dodgeSpeed: 10
+    dodgeDuration: 0.2
+    healingAmount: 0
+    speedBuff: 0
+    attackBuff: 0
+    cooldownBuff: 0
+    projectile: {fileID: 0}
+  - moveName: Block
+    moveType: 1
+    damage: 0
+    cooldown: 6
+    probability: 0
+    baseProbability: 10
+    moveRange: 1.5
+    chargeTime: 0
+    attackEffect: []
+    moveAnim: {fileID: 0}
+    blockPercentage: 80
+    blockTime: 2
+    dashSpeed: 20
+    dashDuration: 0.4
+    dodgeSpeed: 10
+    dodgeDuration: 0.2
+    healingAmount: 0
+    speedBuff: 0
+    attackBuff: 0
+    cooldownBuff: 0
+    projectile: {fileID: 0}

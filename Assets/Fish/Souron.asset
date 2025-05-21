@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e728c32843353f43af275d980015ace, type: 3}
+  m_Name: Souron
+  m_EditorClassIdentifier: 
+  fishName: Souron
+  description: It's also called the soul stalker, legends say when this fish kills
+    something it will eat it's soul.
+  rarity: 2
+  fishSprite: {fileID: 21300000, guid: efc75743cc0c38347a173f3a65b7c3c5, type: 3}
+  nutrition: 20
+  regeneration: 0
+  shield: 0
+  fishSpeed: 120
+  fishWeight: 0.5
+  wildness: 2
+  fishSize: 100
+  effect:
+  - effect: 8
+    effectStrength: 1
+    effectDuration: 30

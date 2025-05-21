@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e728c32843353f43af275d980015ace, type: 3}
+  m_Name: PikardM
+  m_EditorClassIdentifier: 
+  fishName: Mutated Pikard
+  description: A common Pikard that has been mutated, it has grown a lot more spikes.
+  rarity: 5
+  fishSprite: {fileID: 21300000, guid: d5f905543f6521f4ebab8d3722087601, type: 3}
+  nutrition: 8
+  regeneration: 0
+  shield: 0
+  fishSpeed: 130
+  fishWeight: 1.6
+  wildness: 1
+  fishSize: 90
+  effect: []

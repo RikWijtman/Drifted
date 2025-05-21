@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e728c32843353f43af275d980015ace, type: 3}
+  m_Name: Koldil
+  m_EditorClassIdentifier: 
+  fishName: Koldil
+  description: A common fish, found in a lot of regions. It uses it's hard skull
+    to bash into predators.
+  rarity: 0
+  fishSprite: {fileID: 21300000, guid: fc01553d0979f604099f64f23e475626, type: 3}
+  nutrition: 5
+  regeneration: 0
+  shield: 5
+  fishSpeed: 80
+  fishWeight: 0.6
+  wildness: 3
+  fishSize: 110
+  effect: []
