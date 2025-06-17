@@ -12,7 +12,7 @@ public class Enemy : ScriptableObject
     public float health; //Hit points
     [Range(0, 10)]
     public float speed; //Speed
-    [Range(0, 12)]
+    [Range(0, 20)]
     public float detectionRange; //Range to detect player
     public bool canCluster; //If the enemy can group with others? 
     public Hostility hostility; //Will it attack the player?
@@ -38,16 +38,19 @@ public class Moves
     public float moveRange; //distance the enemy has to be in, to be able to use the move
                             //(for buffing, the buff range. For healing the range it has be away from the player)
     public float chargeTime = 0; //how long does the charging take? Zero for a quick attack
-    public AttackEffects[] attackEffect; //Effect the attack will trigger on the player when hit
+    public Effects[] attackEffect; //Effect the attack will trigger on the player when hit
     public AnimationClip moveAnim; //Coresponding animation clip
 
     [Header("Block")]
+    [Range(0, 100)]
     [HideInInspector] public float blockPercentage = 100; //% damage blocked 
     [HideInInspector] public float blockTime = 3f; //time the enemy will block
 
     [Header("Dash")]
     [HideInInspector] public float dashSpeed = 20f; //the speed of the dash
     [HideInInspector] public float dashDuration = 0.4f; //how long the dash takes
+    [HideInInspector] public GameObject dashIndicatorPrefab; // Sleep hier je cirkel prefab in de inspector
+    [HideInInspector] public Color dashIndicatorColor; // Sleep hier je cirkel prefab in de inspector
 
     [Header("Dodge")]
     [HideInInspector] public float dodgeSpeed = 20f; //the speed of the dodge
@@ -64,6 +67,12 @@ public class Moves
     [Header("Ranged")]
     [HideInInspector] public GameObject projectile;
     [HideInInspector] public float projectileSpeed;
+
+    [Header("Special")]
+    [HideInInspector] public SpecialTypes specialType; //type of special move   
+    [HideInInspector] public float specialRange = 5f; //range of the special move, how far it can reach
+    [HideInInspector] public GameObject circleIndicatorPrefab; // Sleep hier je cirkel prefab in de inspector
+    [HideInInspector] public Color indicatorColor; // Sleep hier je cirkel prefab in de inspector
 
     /*different types of moves that can be inplemented
      * simple, quick attack
@@ -82,21 +91,19 @@ public class Moves
         Dodge,
         Healing,
         Buffing,
-        Ranged
+        Ranged,
+        Special
     }
     //Plans: Camouflage, Trapping, Digging, Summoning, Lasers, Effect
-}
 
-[System.Serializable]
-public class AttackEffects
-{
-    public Effect effect;
-    public float effectStrength;
-    public float effectLength;
-
-    public enum Effect
+    /*different types of special moves that can be implemented
+     * Circle, A circle that will be placed on the ground, with the enemy in the middle
+     * Straight, A straight line that will be placed on the ground, the enemy will move to the end and then explode
+     *
+    */
+    public enum SpecialTypes
     {
-        Poison,
-        Electric
+        Circle,
+        Straight
     }
 }

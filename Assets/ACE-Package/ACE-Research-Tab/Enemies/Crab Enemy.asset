@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ba04016d34fe148853ca251618492b, type: 3}
+  m_Name: Crab Enemy
+  m_EditorClassIdentifier: 
+  enemyName: Crab Enemy
+  description: Basic crab enemy
+  enemySprite: {fileID: -1912032790, guid: 274000845ce382540b5a28dfaba0b88b, type: 3}
+  difficulty: 3
+  health: 100
+  speed: 5
+  detectionRange: 10
+  canCluster: 0
+  hostility: 0
+  moveset:
+  - moveName: Slash
+    moveType: 0
+    damage: 10
+    cooldown: 3
+    probability: 50
+    baseProbability: 50
+    moveRange: 1
+    chargeTime: 0
+    attackEffect: []
+    moveAnim: {fileID: 0}
+    blockPercentage: 0
+    blockTime: 0
+    dashSpeed: 0
+    dashDuration: 0
+    dashIndicatorPrefab: {fileID: 0}
+    dashIndicatorColor: {r: 0, g: 0, b: 0, a: 0}
+    dodgeSpeed: 0
+    dodgeDuration: 0
+    healingAmount: 0
+    speedBuff: 0
+    attackBuff: 0
+    cooldownBuff: 0
+    projectile: {fileID: 0}
+    projectileSpeed: 0
+    specialType: 0
+    specialRange: 0
+    circleIndicatorPrefab: {fileID: 0}
+    indicatorColor: {r: 0, g: 0, b: 0, a: 0}
+  - moveName: Charge
+    moveType: 7
+    damage: 20
+    cooldown: 3
+    probability: 26.190477
+    baseProbability: 50
+    moveRange: 1
+    chargeTime: 5
+    attackEffect: []
+    moveAnim: {fileID: 0}
+    blockPercentage: 0
+    blockTime: 0
+    dashSpeed: 0
+    dashDuration: 0
+    dashIndicatorPrefab: {fileID: 0}
+    dashIndicatorColor: {r: 0, g: 0, b: 0, a: 0}
+    dodgeSpeed: 0
+    dodgeDuration: 0
+    healingAmount: 0
+    speedBuff: 0
+    attackBuff: 0
+    cooldownBuff: 0
+    projectile: {fileID: 0}
+    projectileSpeed: 0
+    specialType: 0
+    specialRange: 5
+    circleIndicatorPrefab: {fileID: 8143206731747318936, guid: ad7135e5eee9153469f42bd7fa3559df, type: 3}
+    indicatorColor: {r: 1, g: 0, b: 0, a: 0.5294118}

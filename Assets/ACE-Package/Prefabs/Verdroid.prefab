@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 3853206433551467749}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: 0, y: 0.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -117,7 +117,7 @@ Transform:
   - {fileID: 5842953531718674540}
   m_Father: {fileID: 7713853672634064578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6729883151274953135
+--- !u!1 &6339124350812171895
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,44 +125,59 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7713853672634064578}
-  - component: {fileID: 5866069167695573351}
-  - component: {fileID: 845287094313638809}
-  - component: {fileID: 3424235597944200764}
-  - component: {fileID: 1828229764993628265}
-  - component: {fileID: 7754290123644170617}
-  - component: {fileID: 8175224614235483087}
-  - component: {fileID: 9202545997690314469}
+  - component: {fileID: 7911315695394033511}
+  - component: {fileID: 8825716276583812543}
+  - component: {fileID: 3653188347521907804}
   m_Layer: 0
-  m_Name: Verdroid
-  m_TagString: Enemy
+  m_Name: Skin
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7713853672634064578
+--- !u!4 &7911315695394033511
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6729883151274953135}
+  m_GameObject: {fileID: 6339124350812171895}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4718364407885635730}
-  m_Father: {fileID: 0}
+  m_Children: []
+  m_Father: {fileID: 7713853672634064578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5866069167695573351
+--- !u!95 &8825716276583812543
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339124350812171895}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e73acda4d1a6b344a9125b9b33e31ba9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &3653188347521907804
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6729883151274953135}
+  m_GameObject: {fileID: 6339124350812171895}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -197,17 +212,55 @@ SpriteRenderer:
   m_SortingLayerID: 1331433219
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -291267523, guid: e7a0ba46ffd9bb84a996c33eca8396b5, type: 3}
+  m_Sprite: {fileID: -271444359, guid: 3645e961e5db3db41bda1265f9cdff14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6729883151274953135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7713853672634064578}
+  - component: {fileID: 845287094313638809}
+  - component: {fileID: 3424235597944200764}
+  - component: {fileID: 7754290123644170617}
+  - component: {fileID: 8175224614235483087}
+  - component: {fileID: 9202545997690314469}
+  m_Layer: 0
+  m_Name: Verdroid
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7713853672634064578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729883151274953135}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4718364407885635730}
+  - {fileID: 7911315695394033511}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &845287094313638809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,12 +274,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: {fileID: 11400000, guid: b118aa6a25b114b4dbbcd213b6d28f44, type: 2}
-  moveset: []
-  dashSpeed: 20
-  dashDuration: 0.15
   attackTimeOut: 0.5
   stunTime: 1.5
   healthFill: {fileID: 6731561767984479948}
+  notification: {fileID: 7711751452903345083, guid: fd23d1ce763afb848bf97d66aa25e6b2, type: 3}
   idleStyle: 0
   patrollingPoints: []
   roamingRange: 0
@@ -257,27 +308,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &1828229764993628265
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6729883151274953135}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e73acda4d1a6b344a9125b9b33e31ba9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &7754290123644170617
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -310,12 +340,12 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.4}
+  m_Offset: {x: 0, y: 0.05}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2, y: 2}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -353,7 +383,8 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 128
-  detectionRange: 10
+  detectionRange: 0
+  enemyObject: {fileID: 0}
 --- !u!1 &7741277889848170589
 GameObject:
   m_ObjectHideFlags: 0

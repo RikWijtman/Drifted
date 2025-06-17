@@ -25,6 +25,6 @@ MonoBehaviour:
   wildness: 2
   fishSize: 100
   effect:
-  - effect: 8
+  - effects: 7
     effectStrength: 1
-    effectDuration: 30
+    effectLength: 30

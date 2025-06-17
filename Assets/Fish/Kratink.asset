@@ -16,7 +16,7 @@ MonoBehaviour:
   description: A small fish that only lives in some parts of The Central Area, eating
     it strengthens your bones.
   rarity: 3
-  fishSprite: {fileID: 21300000, guid: 965b63b9204eb1543a4488ed1365196c, type: 3}
+  fishSprite: {fileID: 21300000, guid: 7c84902c22de5d04fac15d5684fe6174, type: 3}
   nutrition: 0
   regeneration: 0
   shield: 10
@@ -25,6 +25,6 @@ MonoBehaviour:
   wildness: 4
   fishSize: 70
   effect:
-  - effect: 3
+  - effects: 2
     effectStrength: 3
-    effectDuration: 60
+    effectLength: 60

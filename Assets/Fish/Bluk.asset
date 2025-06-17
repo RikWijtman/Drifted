@@ -15,7 +15,7 @@ MonoBehaviour:
   fishName: Bluk
   description: It has a lot of muscles, it's said it can punch trough any metal.
   rarity: 3
-  fishSprite: {fileID: 21300000, guid: 965b63b9204eb1543a4488ed1365196c, type: 3}
+  fishSprite: {fileID: 21300000, guid: dd952fb2c2fe7c74a8c4d110896a4441, type: 3}
   nutrition: 30
   regeneration: 0
   shield: 0
@@ -24,6 +24,6 @@ MonoBehaviour:
   wildness: 2
   fishSize: 100
   effect:
-  - effect: 2
+  - effects: 1
     effectStrength: 3
-    effectDuration: 60
+    effectLength: 60

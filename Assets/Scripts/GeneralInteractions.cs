@@ -1,7 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using System.Collections;
+using System.Collections.Generic;
 
 public class InteractableItem : MonoBehaviour
 {
@@ -13,7 +11,7 @@ public class InteractableItem : MonoBehaviour
 
     [Header("Item Specific Settings")]
     public Item itemData;
-    public InventoryUI inventoryUI;
+    public InventoryUIManager inventoryUI;
 
     [Header("Effects")]
     public ParticleSystem pickupParticles;
@@ -24,17 +22,31 @@ public class InteractableItem : MonoBehaviour
     public float popupFloatSpeed = 1f;
     public float popupFloatAmplitude = 0.2f;
 
-    private Transform player;
     private bool isInteracted = false;
     private bool particlesShowing = false;
 
-
+    private Transform player;
     private GameObject currentPopup;
     private Vector3 popupOriginalPosition;
 
+    public static List<InteractableItem> allItems = new List<InteractableItem>();
+
+    private void Awake()
+    {
+        allItems.Add(this);
+    }
+
+    private void OnDestroy()
+    {
+        allItems.Remove(this);
+    }
+
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+            player = playerObj.transform;
+
         if (pickupParticles != null) pickupParticles.Stop();
     }
 
@@ -42,14 +54,40 @@ public class InteractableItem : MonoBehaviour
     {
         if (isInteracted) return;
 
+        if (player == null) return;
+
+        InteractableItem closest = null;
+        float closestDist = float.MaxValue;
+
+        // Zoek het dichtstbijzijnde item binnen interactie-range
+        foreach (var item in allItems)
+        {
+            float dist = Vector3.Distance(player.position, item.transform.position);
+            if (dist < item.interactionRange && dist < closestDist)
+            {
+                closest = item;
+                closestDist = dist;
+            }
+        }
+
+        // Alleen het dichtstbijzijnde item mag reageren
+        /*if (closest == this)
+        {
+            // Toon prompt (optioneel)
+            // Debug.Log(interactionPrompt);
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                PickupItem();
+            }
+        }*/
+
         float distance = Vector3.Distance(player.position, transform.position);
 
         if (distance <= interactionRange)
         {
             if (currentPopup == null) CreatePopup();
             AnimatePopup();
-
-            if (Input.GetKeyDown(KeyCode.E)) PickupItem();
         }
         else
         {
@@ -68,43 +106,44 @@ public class InteractableItem : MonoBehaviour
         }
     }
 
-    private void PickupItem()
+    public void PickupItem()
     {
-        isInteracted = true;
+
+        bool pickedUp = false;
 
         if (inventoryUI != null && itemData != null)
         {
-            inventoryUI.AddItem(itemData.itemIcon);
+            pickedUp = inventoryUI.AddItem(itemData);
+
+            if (pickedUp) {
+                isInteracted = true;
+                if (pickedUp && itemData.itemName == "Fishing Rod")
+                {
+                    var fishingManager = FindObjectOfType<FishingMinigameManager>();
+                    fishingManager?.SetFishingRodStatus(true);
+                }
+                else if (pickedUp && itemData.itemName == "Horn")
+                {
+                    inventoryUI.SetHasHorn(true);
+                }
+                else if (pickedUp)
+                {
+                    var combatController = FindObjectOfType<CombatController>();
+                    if (itemData.itemName == "Magical Sword")
+                        combatController?.SetSwordStatus(true);
+                    else if (itemData.itemName == "Magical Shield")
+                        combatController?.SetShieldStatus(true);
+                }
+            }
         }
 
-        Debug.Log($"You picked up {itemData.itemName}!");
-        
-        if (itemData != null)
+        // Alleen verwijderen als het echt is opgepakt!
+        if (pickedUp)
         {
-            if (itemData.itemName == "Fishing Rod")
-            {
-                var fishingManager = FindObjectOfType<FishingMinigameManager>();
-                fishingManager?.SetFishingRodStatus(true);
-            }
-            else
-            {
-                var combatController = FindObjectOfType<CombatController>();
-                if (itemData.itemName == "Sword")
-                {
-                    combatController?.SetSwordStatus(true);
-                }
-                else if (itemData.itemName == "Shield")
-                {
-                    combatController?.SetShieldStatus(true);
-                }
-            }
+            if (pickupParticles != null) pickupParticles.Stop();
+            if (currentPopup != null) Destroy(currentPopup);
+            Destroy(gameObject);
         }
-        
-
-        if (pickupParticles != null) pickupParticles.Stop();
-        gameObject.SetActive(false);
-
-        if (currentPopup != null) Destroy(currentPopup);
     }
 
 

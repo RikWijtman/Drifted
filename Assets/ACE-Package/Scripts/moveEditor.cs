@@ -38,6 +38,8 @@ public class MovesDrawer : PropertyDrawer
             case Moves.AttackTypes.Dash:
                 EditorGUILayout.PropertyField(property.FindPropertyRelative("dashSpeed"));
                 EditorGUILayout.PropertyField(property.FindPropertyRelative("dashDuration"));
+                EditorGUILayout.PropertyField(property.FindPropertyRelative("dashIndicatorPrefab"));
+                EditorGUILayout.PropertyField(property.FindPropertyRelative("dashIndicatorColor"));
                 break;
 
             case Moves.AttackTypes.Dodge:
@@ -58,6 +60,13 @@ public class MovesDrawer : PropertyDrawer
             case Moves.AttackTypes.Ranged:
                 EditorGUILayout.PropertyField(property.FindPropertyRelative("projectile"));
                 EditorGUILayout.PropertyField(property.FindPropertyRelative("projectileSpeed"));
+                break;
+
+            case Moves.AttackTypes.Special:
+                EditorGUILayout.PropertyField(property.FindPropertyRelative("specialType"));
+                EditorGUILayout.PropertyField(property.FindPropertyRelative("specialRange"));
+                EditorGUILayout.PropertyField(property.FindPropertyRelative("circleIndicatorPrefab"));
+                EditorGUILayout.PropertyField(property.FindPropertyRelative("indicatorColor"));
                 break;
         }
 

@@ -16,7 +16,7 @@ MonoBehaviour:
   description: The remaindings of ancient fish, eating the small parts of flesh of
     the fish is said to be a real delicacy.
   rarity: 3
-  fishSprite: {fileID: 21300000, guid: 66c40e47d7fa00e4daf2f26bc493b071, type: 3}
+  fishSprite: {fileID: 21300000, guid: e698d4db1d46b1148ab8956dd6de7f91, type: 3}
   nutrition: 0
   regeneration: 0
   shield: 20
@@ -25,9 +25,9 @@ MonoBehaviour:
   wildness: 3
   fishSize: 80
   effect:
-  - effect: 3
+  - effects: 2
     effectStrength: 3
-    effectDuration: 30
-  - effect: 10
+    effectLength: 60
+  - effects: 9
     effectStrength: 1
-    effectDuration: 30
+    effectLength: 60

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585d7b8f954535d499e87af688019a4d, type: 3}
   m_Name: CraftersKit
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Crafters Kit
   itemIcon: {fileID: 0}

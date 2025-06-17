@@ -1,0 +1,61 @@
+Good morning and thank you for using ACE
+
+If you opened this file you're probably curious how you can make your own enemy.
+I'll explain how to in a few steps.
+
+- First we want to make an enemy object
+
+ In this object all the data of the enemy is stored.
+ to make an enemy object you right click in the folder you want to add the object. 
+ When in the menu select CREATE > COMBAT > ENEMY
+
+ When you're ready you can give the object a name and start creating the enemy.
+ Explanations about each field:
+  Enemy Name - Name
+  Description - Description of the enemy you want to make (Optional)
+  Enemy Sprite - Sprite
+  Difficulty - Difficulty of the enemy (range 1-5) (Optional)
+  Health - Health points of the enemy
+  Speed - Speed of the enemy (range 0-10)
+  Detection range - Range wherein the enemy can see you
+  Can Cluster - WIP
+  Hostility - If the enemy will attack the player on the spot or starts of passive
+  Moveset - See explanation: "How to create new moveset"
+
+ Now that the enemy object is created we can go to the next part.
+
+- Creating an enemy instance
+
+ In the prefabs folder in the package there will be a prefab of a blanco enemy
+ Drag him into the scene and unpack the prefab, right click > PREFAB > UNPACK COMPLETELY
+ After adding him into the scene, you have to add a few things:
+
+ Add a sprite, SPRITE RENDERER > SPRITE > [Select a sprite]
+ Add the enemy object, ENEMY BASIC SCRIPT > ENEMY TYPE > [Select the object you just made]
+ Add animations, ANIMATOR > CONTROLLER > [Select a enemy controller]
+ Make sure the collider is the correct size, BOX COLLIDER 2D > SIZE
+
+ optional: 
+ ENEMY BASIC SCRIPT:
+  Attack time out - Small time out after using a move, until the enemy can attack again
+  Stun time - Small stun after hiting the player who's blocking
+  Idle style - WIP
+  Patrolling points - WIP
+  Roaming range - WIP
+
+After the instance is finished you can drag the instance into a folder to create a prefab.
+
+When this is all correctly put in, the enemy should behave as an enemy should.
+Good job (:
+
+
+Common issues:
+ MY ENEMIES WALK THROUGH THE OBSTACLES.
+  - Make sure the objects are placed on the Block layer
+  You can see this when navigating to your obstacle, 
+  and on the top of the inspector you'll see the tab LAYER.
+  - Also make sure the correct layer is selected in the enemy prefab
+  ENEMY PATHFINDING > OBSTACLE MASK > [Select the correct layer]
+ MY ENEMY DOESN'T MOVE.
+  - Make sure the speed and detectionRange are correctly assigned in the enemy object
+  - Make sure the enemy has a Enemy Basic Script

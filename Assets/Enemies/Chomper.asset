@@ -37,6 +37,8 @@ MonoBehaviour:
     blockTime: 3
     dashSpeed: 0
     dashDuration: 0
+    dashIndicatorPrefab: {fileID: 0}
+    dashIndicatorColor: {r: 0, g: 0, b: 0, a: 0}
     dodgeSpeed: 10
     dodgeDuration: 0.2
     healingAmount: 0
@@ -44,11 +46,16 @@ MonoBehaviour:
     attackBuff: 0
     cooldownBuff: 0
     projectile: {fileID: 0}
+    projectileSpeed: 0
+    specialType: 0
+    specialRange: 5
+    circleIndicatorPrefab: {fileID: 0}
+    indicatorColor: {r: 0, g: 0, b: 0, a: 0}
   - moveName: Bash
     moveType: 2
     damage: 5
     cooldown: 10
-    probability: 22.680412
+    probability: 6.625259
     baseProbability: 20
     moveRange: 1
     chargeTime: 0
@@ -56,8 +63,10 @@ MonoBehaviour:
     moveAnim: {fileID: 7400000, guid: 2e3b20d0687f3a049be9f66bea477b09, type: 2}
     blockPercentage: 0
     blockTime: 3
-    dashSpeed: 10
-    dashDuration: 0.15
+    dashSpeed: 12
+    dashDuration: 0.25
+    dashIndicatorPrefab: {fileID: 429133705959857393, guid: 2c068832ef104074e991842d625e8b79, type: 3}
+    dashIndicatorColor: {r: 1, g: 0, b: 0, a: 0.49019608}
     dodgeSpeed: 10
     dodgeDuration: 0.2
     healingAmount: 0
@@ -65,3 +74,8 @@ MonoBehaviour:
     attackBuff: 0
     cooldownBuff: 0
     projectile: {fileID: 0}
+    projectileSpeed: 0
+    specialType: 0
+    specialRange: 5
+    circleIndicatorPrefab: {fileID: 0}
+    indicatorColor: {r: 0, g: 0, b: 0, a: 0}

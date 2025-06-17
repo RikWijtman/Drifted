@@ -48,6 +48,8 @@ public class GridManager : MonoBehaviour
         int x = Mathf.RoundToInt((gridSizeX - 1) * percentX);
         int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
 
+        Debug.Log($"[NodeFromWorldPoint] worldPosition: {worldPosition} -> grid: ({x},{y}) nodeWorldPos: {grid[x, y].worldPosition}");
+
         return grid[x, y];
     }
 
@@ -60,7 +62,7 @@ public class GridManager : MonoBehaviour
             for (int y = -1; y <= 1; y++)
             {
                 if (x == 0 && y == 0) continue;
-                if (x != 0 && y != 0) continue; // Alleen 4-richting
+                if (x != 0 && y != 0) continue; 
 
                 int checkX = node.gridX + x;
                 int checkY = node.gridY + y;

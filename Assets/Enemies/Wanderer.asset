@@ -15,11 +15,11 @@ MonoBehaviour:
   enemyName: Wanderer
   description: A passive creature that wanders around areas around The Central Area,
     it has a big cloak to hide it's true identity.
-  enemySprite: {fileID: 424208057, guid: 8a560f3544094844b9468f593b89585c, type: 3}
+  enemySprite: {fileID: 1702581830, guid: 8a560f3544094844b9468f593b89585c, type: 3}
   difficulty: 1
   health: 25
-  speed: 6
-  detectionRange: 6
+  speed: 2
+  detectionRange: 12
   canCluster: 0
   hostility: 1
   moveset:
@@ -37,6 +37,8 @@ MonoBehaviour:
     blockTime: 0
     dashSpeed: 0
     dashDuration: 0
+    dashIndicatorPrefab: {fileID: 0}
+    dashIndicatorColor: {r: 0, g: 0, b: 0, a: 0}
     dodgeSpeed: 0
     dodgeDuration: 0
     healingAmount: 0
@@ -45,13 +47,17 @@ MonoBehaviour:
     cooldownBuff: 0
     projectile: {fileID: 0}
     projectileSpeed: 0
+    specialType: 0
+    specialRange: 5
+    circleIndicatorPrefab: {fileID: 0}
+    indicatorColor: {r: 0, g: 0, b: 0, a: 0}
   - moveName: Haunt
     moveType: 6
     damage: 20
     cooldown: 5
     probability: 0
     baseProbability: 40
-    moveRange: 4
+    moveRange: 7
     chargeTime: 0
     attackEffect: []
     moveAnim: {fileID: 0}
@@ -59,33 +65,17 @@ MonoBehaviour:
     blockTime: 0
     dashSpeed: 0
     dashDuration: 0
+    dashIndicatorPrefab: {fileID: 0}
+    dashIndicatorColor: {r: 0, g: 0, b: 0, a: 0}
     dodgeSpeed: 0
     dodgeDuration: 0
     healingAmount: 0
     speedBuff: 0
     attackBuff: 0
     cooldownBuff: 0
-    projectile: {fileID: 4126164419378707069, guid: 897ab526a235df94e8b87e423f51593d, type: 3}
+    projectile: {fileID: 4126164419378707069, guid: 711f925906272104f8b0543695bf8933, type: 3}
     projectileSpeed: 4
-  - moveName: Dodge
-    moveType: 3
-    damage: 0
-    cooldown: 7
-    probability: 7.2018347
-    baseProbability: 10
-    moveRange: 2
-    chargeTime: 0
-    attackEffect: []
-    moveAnim: {fileID: 0}
-    blockPercentage: 0
-    blockTime: 0
-    dashSpeed: 0
-    dashDuration: 0
-    dodgeSpeed: 10
-    dodgeDuration: 0.2
-    healingAmount: 0
-    speedBuff: 0
-    attackBuff: 0
-    cooldownBuff: 0
-    projectile: {fileID: 0}
-    projectileSpeed: 4
+    specialType: 0
+    specialRange: 5
+    circleIndicatorPrefab: {fileID: 0}
+    indicatorColor: {r: 0, g: 0, b: 0, a: 0}

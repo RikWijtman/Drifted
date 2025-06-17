@@ -24,12 +24,12 @@ MonoBehaviour:
   wildness: 3
   fishSize: 110
   effect:
-  - effect: 1
+  - effects: 0
     effectStrength: 2
-    effectDuration: 10
-  - effect: 2
+    effectLength: 15
+  - effects: 2
     effectStrength: 2
-    effectDuration: 10
-  - effect: 3
+    effectLength: 15
+  - effects: 1
     effectStrength: 2
-    effectDuration: 10
+    effectLength: 15

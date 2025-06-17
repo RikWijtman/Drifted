@@ -1,0 +1,29 @@
+Good morning and thank you for using ACE
+
+If you opened this file you must be curious how the pathfinding works for the enemies,
+and how you can use it in your own game.
+
+The pathfinding system is currenlty working with three scripts:
+EnemyPathfinding.cs - This script simply exists of only one function: CanSeePlayer()
+ when you run the function it will check if the player is in line of sight
+ and if the player is in the detection range.
+GridManager.cs - GridManager creates a grid made out of nodes to track the player.
+ When the node overlaps over an obstacle, the node won't be walkable and will turn red.
+ This grid will be used to track the player when he's out line of sight of the enemy.
+ The grid can be adjusted by changing the Grid world size (The size is in unity units)
+ And by changing the Node radius (This is the size the nodes will be)
+ (The smaller the node radius, the more precise the enemies will move, but runs less smooth)
+Pathfinder.cs - This script is connected to the GridManager 
+ and uses the nodes to create a path to the player.
+ The path created to the player will be visible in the editor when playing. (Has a blue color)
+
+To use the pathfinder you have to have a few things installed 
+- A pathfinder/grid instance, this has the GridManager and Pathfinder script on it
+ Here you have to set the Grid size and Node radius 
+ and set the Unwalkable mask to the layer of the obstacles.
+- The EnemyPathfinding script on the enemies
+ Here you have to set the player and the obstacle mask (same as previous scripts)
+ The other fields don't do anything.
+
+When everything is installed the pathfinding should work.
+Good luck (:

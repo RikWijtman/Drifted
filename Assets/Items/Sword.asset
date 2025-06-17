@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585d7b8f954535d499e87af688019a4d, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  itemName: Sword
+  itemName: Magical Sword
   itemIcon: {fileID: 21300000, guid: a9f623b5aebf7d04a8b04aabe8ded4b0, type: 3}

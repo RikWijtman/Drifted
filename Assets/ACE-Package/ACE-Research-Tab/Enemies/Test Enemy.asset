@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ba04016d34fe148853ca251618492b, type: 3}
+  m_Name: Test Enemy
+  m_EditorClassIdentifier: 
+  enemyName: Test Enemy
+  description: This is a test enemy
+  enemySprite: {fileID: 1030626076, guid: a7b34b072395b2b4fa84f3fbf234ab09, type: 3}
+  difficulty: 1
+  health: 5
+  speed: 3
+  detectionRange: 10
+  canCluster: 0
+  hostility: 0
+  moveset: []

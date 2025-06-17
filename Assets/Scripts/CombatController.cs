@@ -35,6 +35,10 @@ public class CombatController : MonoBehaviour
 
     private void Update()
     {
+        // Blokkeer alle combat-acties als de speler gestunned is
+        if (playerController != null && playerController.isStunned)
+            return;
+
         //all inputs
         if (Input.GetMouseButtonDown(0) && hasSword && canAttack)
         {

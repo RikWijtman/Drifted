@@ -8,11 +8,17 @@ public class EnemyPathfinding : MonoBehaviour
     public LayerMask obstacleMask;
     public float detectionRange = 10f;
 
+    public Enemy enemyObject;
+
     public Vector2? lastSeenPosition { get; private set; } = null;
 
     public bool CanSeePlayer()
     {
-        //check of the player exists
+        // Use detectionRange from the enemyObject if it exists
+        if (enemyObject != null)
+            detectionRange = enemyObject.detectionRange;
+
+        //check if the player is assigned
         if (player == null)
             return false;
 

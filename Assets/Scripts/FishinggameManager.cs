@@ -39,14 +39,15 @@ public class FishingMinigameManager : MonoBehaviour
     private string fishingFeedback;
 
     [Header("Fish Caught Notification UI")]
-    public GameObject notificationPanel; // Het notificatiescherm
-    public Image fishImage; // Afbeelding van de gevangen vis
-    public TMP_Text fishNameText; // Naam van de gevangen vis
-    public TMP_Text fishDescriptionText; // Beschrijving van de vis
-    public TMP_Text fishRarity1Text; // Naam van de gevangen vis
-    public TMP_Text fishRarity2Text; // Beschrijving van de vis
-    public TMP_Text fishEffectText; // Beschrijving van de vis
-    public Button confirmButton; // Knop om notificatie te sluiten
+    public GameObject notificationPanel; // The notification panel
+    public Image fishImage; // Picture of the caught fish
+    public TMP_Text fishNameText; // Name of the caught fish
+    public TMP_Text fishDescriptionText; // Description of the fish
+    public TMP_Text fishRarityText; // Rarity of the fish
+    public TMP_Text fishNutritionText; // Nutrition of the fish
+    public TMP_Text fishEffectText; // Effect of the fish
+    public Button confirmButton; // Button to confirm
+    public Button eatButton; // Button to eat fish
 
     private void Start()
     {
@@ -204,32 +205,75 @@ public class FishingMinigameManager : MonoBehaviour
         fishNameText.text = fish.fishName; // Zet de naam van de vis
         fishDescriptionText.text = fish.description; // Zet de beschrijving van de vis
 
-        // Rarity omzetten naar een string array
-        string[] rarities = fish.rarity.ToString().Split(new string[] { ", " }, System.StringSplitOptions.RemoveEmptyEntries);
+        // Toon nutrition info, alleen als waarde > 0
+        string nutritionLines = "";
+        if (fish.nutrition > 0)
+            nutritionLines += $"Mana restoration: {fish.nutrition}\n";
+        if (fish.regeneration > 0)
+            nutritionLines += $"HP restoration: {fish.regeneration}\n";
+        if (fish.shield > 0)
+            nutritionLines += $"Shield restoration: {fish.shield}\n";
+        fishNutritionText.text = nutritionLines.TrimEnd('\n');
 
-        // Effect weergeven
+        // Toon alle effecten (max 3) op aparte regels
         if (fish.effect != null && fish.effect.Length > 0)
         {
-            Effect firstEffect = fish.effect[0];
-            fishEffectText.text = $"Effect: {firstEffect.effect} (P: {firstEffect.effectStrength}, D: {firstEffect.effectDuration}s)";
+            string effectLines = "";
+            int maxEffects = Mathf.Min(3, fish.effect.Length);
+            for (int i = 0; i < maxEffects; i++)
+            {
+                var eff = fish.effect[i];
+                effectLines += $"{eff.effects} (Strength: {eff.effectStrength}, Duration: {eff.effectLength}s)";
+                if (i < maxEffects - 1) effectLines += "\n";
+            }
+            fishEffectText.text = effectLines;
         }
         else
         {
             fishEffectText.text = "Effect: Geen";
         }
 
-        fishRarity1Text.text = rarities.Length > 0 ? rarities[0] : "";
-        fishRarity2Text.text = rarities.Length > 1 ? rarities[1] : "";
+        fishRarityText.text = fish.rarity.ToString();
 
         confirmButton.onClick.RemoveAllListeners();
         confirmButton.onClick.AddListener(() => CloseFishNotification());
+
+        eatButton.onClick.RemoveAllListeners();
+        eatButton.onClick.AddListener(() => EatFish(fish));
     }
 
 
     private void CloseFishNotification()
     {
         playerController.enabled = true;
-        notificationPanel.SetActive(false); // Verberg de notificatie
+        notificationPanel.SetActive(false); 
+    }
+
+    public void EatFish(FishData fish)
+    {
+        if (fish.nutrition > 0)
+            playerController.mana = Mathf.Clamp(playerController.mana + fish.nutrition, 0f, 100f);
+        if (fish.regeneration > 0)
+            playerController.health = Mathf.Clamp(playerController.health + fish.regeneration, 0f, 100f);
+        if (fish.shield > 0)
+            playerController.shield = Mathf.Clamp(playerController.shield + fish.shield, 0f, 100f);
+
+        if (fish.effect != null)
+        {
+            foreach (var eff in fish.effect)
+            {
+                playerController.ApplyEffect(
+                    (Effects.Effect)eff.effects, 
+                    eff.effectStrength, 
+                    eff.effectLength
+                );
+            }
+        }
+        
+        CloseFishNotification();
+
+        if (feedbackManager != null)
+            feedbackManager.ShowFeedback("You ate the fish!", true);
     }
 
     private void MoveTarget()

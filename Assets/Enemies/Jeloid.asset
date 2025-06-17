@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ba04016d34fe148853ca251618492b, type: 3}
+  m_Name: Jeloid
+  m_EditorClassIdentifier: 
+  enemyName: Jeloid
+  description: A gigantic parasite that has the body of a jellyfish. It uses it's
+    tentacles to paralyze it's target
+  enemySprite: {fileID: 0}
+  difficulty: 4
+  health: 80
+  speed: 4
+  detectionRange: 10
+  canCluster: 0
+  hostility: 0
+  moveset: []

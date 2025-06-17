@@ -31,12 +31,17 @@ MonoBehaviour:
     baseProbability: 50
     moveRange: 1.5
     chargeTime: 0
-    attackEffect: []
+    attackEffect:
+    - effects: 4
+      effectStrength: 1
+      effectLength: 5
     moveAnim: {fileID: 7400000, guid: 71da1f95f32bb4b4f87cb09c451d5004, type: 2}
     blockPercentage: 0
     blockTime: 2
     dashSpeed: 0
     dashDuration: 0
+    dashIndicatorPrefab: {fileID: 0}
+    dashIndicatorColor: {r: 0, g: 0, b: 0, a: 0}
     dodgeSpeed: 10
     dodgeDuration: 0.2
     healingAmount: 0
@@ -44,11 +49,16 @@ MonoBehaviour:
     attackBuff: 0
     cooldownBuff: 0
     projectile: {fileID: 0}
+    projectileSpeed: 0
+    specialType: 0
+    specialRange: 5
+    circleIndicatorPrefab: {fileID: 0}
+    indicatorColor: {r: 0, g: 0, b: 0, a: 0}
   - moveName: Charged
-    moveType: 0
+    moveType: 7
     damage: 25
     cooldown: 5
-    probability: 0
+    probability: 10.020704
     baseProbability: 20
     moveRange: 1.5
     chargeTime: 2
@@ -58,6 +68,8 @@ MonoBehaviour:
     blockTime: 2
     dashSpeed: 0
     dashDuration: 0
+    dashIndicatorPrefab: {fileID: 0}
+    dashIndicatorColor: {r: 0, g: 0, b: 0, a: 0}
     dodgeSpeed: 10
     dodgeDuration: 0.2
     healingAmount: 0
@@ -65,11 +77,16 @@ MonoBehaviour:
     attackBuff: 0
     cooldownBuff: 0
     projectile: {fileID: 0}
+    projectileSpeed: 0
+    specialType: 0
+    specialRange: 5
+    circleIndicatorPrefab: {fileID: 8143206731747318936, guid: ad7135e5eee9153469f42bd7fa3559df, type: 3}
+    indicatorColor: {r: 1, g: 0, b: 0, a: 0.49019608}
   - moveName: Dodge
     moveType: 3
     damage: 0
     cooldown: 10
-    probability: 0
+    probability: 16.438923
     baseProbability: 20
     moveRange: 1.5
     chargeTime: 0
@@ -79,6 +96,8 @@ MonoBehaviour:
     blockTime: 2
     dashSpeed: 20
     dashDuration: 0.4
+    dashIndicatorPrefab: {fileID: 0}
+    dashIndicatorColor: {r: 0, g: 0, b: 0, a: 0}
     dodgeSpeed: 10
     dodgeDuration: 0.2
     healingAmount: 0
@@ -86,11 +105,16 @@ MonoBehaviour:
     attackBuff: 0
     cooldownBuff: 0
     projectile: {fileID: 0}
+    projectileSpeed: 0
+    specialType: 0
+    specialRange: 5
+    circleIndicatorPrefab: {fileID: 0}
+    indicatorColor: {r: 0, g: 0, b: 0, a: 0}
   - moveName: Block
     moveType: 1
     damage: 0
     cooldown: 6
-    probability: 0
+    probability: 8.219461
     baseProbability: 10
     moveRange: 1.5
     chargeTime: 0
@@ -100,6 +124,8 @@ MonoBehaviour:
     blockTime: 2
     dashSpeed: 20
     dashDuration: 0.4
+    dashIndicatorPrefab: {fileID: 0}
+    dashIndicatorColor: {r: 0, g: 0, b: 0, a: 0}
     dodgeSpeed: 10
     dodgeDuration: 0.2
     healingAmount: 0
@@ -107,3 +133,8 @@ MonoBehaviour:
     attackBuff: 0
     cooldownBuff: 0
     projectile: {fileID: 0}
+    projectileSpeed: 0
+    specialType: 0
+    specialRange: 5
+    circleIndicatorPrefab: {fileID: 0}
+    indicatorColor: {r: 0, g: 0, b: 0, a: 0}

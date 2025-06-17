@@ -123,13 +123,349 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sMonster_Wanderer_0
+      name: sEnemy_Wanderer_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 495d14ce057cd7c4aa7b0e660d2e7de8
+      internalID: 1702581830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 576
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49afa4e6b53381348ad0d2335d0e7afe
+      internalID: 593968746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 576
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 090fbf69d3390194495b07946dd91ffe
+      internalID: -822014289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 576
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a50f5e8425b189641b85c942f8a5b627
+      internalID: -1884662094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 576
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aea17f4fef4dd14c846a7f3d858de6d
+      internalID: 2119277766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 576
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0a93188302282e47a539a66e5a5f097
+      internalID: -1808603359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 576
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a98b9ad43ebb4640b356be2e0fff4d1
+      internalID: 1045233216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 576
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fea14d91868192a418c72a499076350a
+      internalID: -6050305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91ed30273cfa28d4ba627558f17225c1
+      internalID: 1757734462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6469cd2b8ceaf74da6330bb8723a388
+      internalID: -1931088416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76de349d923c5fe459094c6bed85cd57
+      internalID: 1232044205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c1e898146cd70a499375b7e140325b6
+      internalID: 1085087733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4e837f1287cd01448bc73aef08bd78c
+      internalID: -924573445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_13
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 384
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f1d8a62a4b72aa48881d808451b7bd0
+      internalID: -427125133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_14
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50b65cc6f572c394b8a03cdce4e9b0df
+      internalID: 1784777959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_15
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 384
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a9cb11a35b8976429e93b267206bf22
+      internalID: 816002873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_16
       rect:
         serializedVersion: 2
         x: 0
         y: 192
-        width: 64
-        height: 64
+        width: 128
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,41 +473,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02a5e09879dc7e84a8f2fa8a4f91fab1
-      internalID: 424208057
+      spriteID: 6a4659d285e59564f89f7cc7bc2d1c28
+      internalID: 1717680182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sMonster_Wanderer_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 18b8a5895f3fbfe46b4fdfde9aba82ec
-      internalID: -1485419265
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sMonster_Wanderer_2
+      name: sEnemy_Wanderer_17
       rect:
         serializedVersion: 2
         x: 128
         y: 192
-        width: 64
-        height: 64
+        width: 128
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +494,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 617e256f23a6c4c4d987345143aa3bfa
-      internalID: 1609150105
+      spriteID: 57ef0ef84db91c241a6606173b4b6c4e
+      internalID: 657857779
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sMonster_Wanderer_3
+      name: sEnemy_Wanderer_18
       rect:
         serializedVersion: 2
-        x: 192
+        x: 256
         y: 192
-        width: 64
-        height: 64
+        width: 128
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +515,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98d4578619d8109418905eb6234e795a
-      internalID: 950828195
+      spriteID: 497a4a55a9db3ed40966294181df653b
+      internalID: 1572426246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sMonster_Wanderer_4
+      name: sEnemy_Wanderer_19
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
-        width: 64
-        height: 64
+        x: 384
+        y: 192
+        width: 128
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +536,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cee193dcc5d03f74eb89c9922f3df005
-      internalID: 251482356
+      spriteID: 7c51ca6566d83b4409ebc3cc6b2f370e
+      internalID: -349200637
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sMonster_Wanderer_5
+      name: sEnemy_Wanderer_20
       rect:
         serializedVersion: 2
-        x: 64
-        y: 128
-        width: 64
-        height: 64
+        x: 512
+        y: 192
+        width: 128
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +557,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ab0d4855ae63a748b993d02020a33dc
-      internalID: 2029001798
+      spriteID: e31db49ab09e12c4c99f9c57ca4799b5
+      internalID: 2107737981
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sMonster_Wanderer_6
+      name: sEnemy_Wanderer_21
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
-        width: 64
-        height: 64
+        x: 640
+        y: 192
+        width: 128
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +578,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d3ff2404f6e9fa4cae5f1616680e8b3
-      internalID: -762553782
+      spriteID: 01481a278e04cce44b4175f58e511c58
+      internalID: 1318502548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sMonster_Wanderer_7
+      name: sEnemy_Wanderer_22
       rect:
         serializedVersion: 2
-        x: 192
-        y: 128
-        width: 64
-        height: 64
+        x: 768
+        y: 192
+        width: 128
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,20 +599,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 296e05828e476804d90e15aa2dce66f8
-      internalID: -1341403383
+      spriteID: eb6292d0de3476f47a26c4621d3fb885
+      internalID: 861860633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sMonster_Wanderer_8
+      name: sEnemy_Wanderer_23
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
+        x: 896
+        y: 192
+        width: 128
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,83 +620,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bbeb563c60ecb64fb4cd1743abbf3fa
-      internalID: -1891724536
+      spriteID: 9f83f39ba51afe348b5e3897ec126b48
+      internalID: -2145647743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sMonster_Wanderer_9
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c62d921aa2b0cd34aa8ccebfd685458a
-      internalID: -2101471991
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sMonster_Wanderer_10
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 75af9c3319583e548b04429e921854fa
-      internalID: -400165589
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sMonster_Wanderer_11
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a309ec3c8eea1624fbe6f7d82880463f
-      internalID: -60919797
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sMonster_Wanderer_12
+      name: sEnemy_Wanderer_24
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 128
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -389,41 +641,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df341ffb0094a6949ad644b45ab52938
-      internalID: 2051719193
+      spriteID: c4c5223c8a306894e91494263d298065
+      internalID: -1987482655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sMonster_Wanderer_13
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1125930685320c84b8a243f581e2aedd
-      internalID: -412543782
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sMonster_Wanderer_14
+      name: sEnemy_Wanderer_25
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 64
-        height: 64
+        width: 128
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -431,20 +662,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8fd9c55993f0f6e45abbc24bbfbb2b71
-      internalID: 506975123
+      spriteID: b41d94539e3f5194b89ecc91f355ff78
+      internalID: -1041623010
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sMonster_Wanderer_15
+      name: sEnemy_Wanderer_26
       rect:
         serializedVersion: 2
-        x: 192
+        x: 256
         y: 0
-        width: 64
-        height: 64
+        width: 128
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -452,8 +683,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4dd27ee29ee4d55438e75379128dc4ae
-      internalID: -1605306141
+      spriteID: 49d123c1e0f50b741b36e229d3c6985c
+      internalID: -1476789846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_27
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ce1616df7629e643bfe3fd6f6f06f91
+      internalID: 1661865938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_28
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d671f3d1a82afc4f86c8d99dceff7dc
+      internalID: 892630308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_29
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0305fd5835fea94da76ab62b0644eb7
+      internalID: -1902659269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_30
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38590a26b97a7744fa94df84fffb3a4d
+      internalID: 886102712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_Wanderer_31
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5d8ff790cc8b304a878a20e9887ec99
+      internalID: -1106555926
       vertices: []
       indices: 
       edges: []
@@ -469,22 +805,38 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      sMonster_Wanderer_0: 424208057
-      sMonster_Wanderer_1: -1485419265
-      sMonster_Wanderer_10: -400165589
-      sMonster_Wanderer_11: -60919797
-      sMonster_Wanderer_12: 2051719193
-      sMonster_Wanderer_13: -412543782
-      sMonster_Wanderer_14: 506975123
-      sMonster_Wanderer_15: -1605306141
-      sMonster_Wanderer_2: 1609150105
-      sMonster_Wanderer_3: 950828195
-      sMonster_Wanderer_4: 251482356
-      sMonster_Wanderer_5: 2029001798
-      sMonster_Wanderer_6: -762553782
-      sMonster_Wanderer_7: -1341403383
-      sMonster_Wanderer_8: -1891724536
-      sMonster_Wanderer_9: -2101471991
+      sEnemy_Wanderer_0: 1702581830
+      sEnemy_Wanderer_1: 593968746
+      sEnemy_Wanderer_10: 1232044205
+      sEnemy_Wanderer_11: 1085087733
+      sEnemy_Wanderer_12: -924573445
+      sEnemy_Wanderer_13: -427125133
+      sEnemy_Wanderer_14: 1784777959
+      sEnemy_Wanderer_15: 816002873
+      sEnemy_Wanderer_16: 1717680182
+      sEnemy_Wanderer_17: 657857779
+      sEnemy_Wanderer_18: 1572426246
+      sEnemy_Wanderer_19: -349200637
+      sEnemy_Wanderer_2: -822014289
+      sEnemy_Wanderer_20: 2107737981
+      sEnemy_Wanderer_21: 1318502548
+      sEnemy_Wanderer_22: 861860633
+      sEnemy_Wanderer_23: -2145647743
+      sEnemy_Wanderer_24: -1987482655
+      sEnemy_Wanderer_25: -1041623010
+      sEnemy_Wanderer_26: -1476789846
+      sEnemy_Wanderer_27: 1661865938
+      sEnemy_Wanderer_28: 892630308
+      sEnemy_Wanderer_29: -1902659269
+      sEnemy_Wanderer_3: -1884662094
+      sEnemy_Wanderer_30: 886102712
+      sEnemy_Wanderer_31: -1106555926
+      sEnemy_Wanderer_4: 2119277766
+      sEnemy_Wanderer_5: -1808603359
+      sEnemy_Wanderer_6: 1045233216
+      sEnemy_Wanderer_7: -6050305
+      sEnemy_Wanderer_8: 1757734462
+      sEnemy_Wanderer_9: -1931088416
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

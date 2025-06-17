@@ -27,7 +27,7 @@ MonoBehaviour:
     moveType: 6
     damage: 15
     cooldown: 5
-    probability: 6.984127
+    probability: 7.3333335
     baseProbability: 10
     moveRange: 4
     chargeTime: 1.2
@@ -48,8 +48,8 @@ MonoBehaviour:
   - moveName: Dodge
     moveType: 3
     damage: 0
-    cooldown: 2
-    probability: 13.968254
+    cooldown: 5
+    probability: 15.619048
     baseProbability: 20
     moveRange: 2.4
     chargeTime: 0

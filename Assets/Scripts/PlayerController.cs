@@ -35,13 +35,16 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
-    private float timeSinceLastTick = 0f;
+    private float timeSinceLastTickBleed = 0f;
+    private float timeSinceLastTickPoison = 0f;
     private float healTimer = 10f;
     private float healCooldown = 0;
     private float healBlock = 10f;
     private bool canDash = true;
     private Vector2 lastLookDirection = Vector2.down;
     private PlayerBehaviour playerBehaviour;
+    private float effectTickTimer = 0f;
+    [HideInInspector] public bool isStunned = false;
 
 
     void Start()
@@ -110,17 +113,41 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (canMove)
+        // --- EFFECTEN ---
+        // STUN: blokkeer alles
+        isStunned = currentEffects.Any(e => e.effects == Effects.Effect.Stun);
+        if (isStunned)
         {
-            rb.MovePosition(rb.position + movement * currentSpeed * Time.fixedDeltaTime);
+            rb.velocity = Vector2.zero;
+            return; // speler kan niet bewegen of aanvallen
         }
 
-        if (running)
+        // HASTE & SLOWNESS: bepaal speed multiplier
+        float speedMultiplier = 1f;
+        var haste = currentEffects.FirstOrDefault(e => e.effects == Effects.Effect.Haste);
+        var slow = currentEffects.FirstOrDefault(e => e.effects == Effects.Effect.Slowness);
+
+        if (haste != null)
+            speedMultiplier += 0.15f * haste.effectStrength; // 15%, 30%, 45%
+        if (slow != null)
+            speedMultiplier -= 0.15f * slow.effectStrength;  // -15%, -30%, -45%
+
+        // Clamp zodat je niet negatief of te snel wordt
+        speedMultiplier = Mathf.Clamp(speedMultiplier, 0.1f, 2f);
+
+        // Pas snelheid aan
+        float effectiveSpeed = currentSpeed * speedMultiplier;
+
+        // --- BEWEGING ---
+        if (canMove)
+        {
+            rb.MovePosition(rb.position + movement * effectiveSpeed * Time.fixedDeltaTime);
+        }
+
+        if (running && movement.sqrMagnitude > 0.01f)
         {
             mana = Mathf.Clamp(mana - 0.01f, 0f, 100f);
         }
-
-        timeSinceLastTick += Time.fixedDeltaTime;
 
         //regenerate health if mana is high enough
         if (mana > 0 && health < 100 && healTimer <= 0)
@@ -128,10 +155,68 @@ public class PlayerController : MonoBehaviour
             health = Mathf.Clamp(health + 0.03f, 0f, 100f);
             mana = Mathf.Clamp(mana - 0.02f, 0f, 100f);
         }
+
+        // Effect timer logic
+        effectTickTimer += Time.fixedDeltaTime;
+        if (effectTickTimer >= 1f)
+        {
+            effectTickTimer = 0f;
+            List<Effects> toRemove = new List<Effects>();
+            foreach (var effect in currentEffects)
+            {
+                effect.effectLength -= 1f;
+                if (effect.effectLength <= 0f)
+                {
+                    toRemove.Add(effect);
+                }
+            }
+            // remove expired effects
+            if (toRemove.Count > 0)
+            {
+                currentEffects = currentEffects.Except(toRemove).ToArray();
+            }
+        }
+
+        //if player has poison effect, reduce mana
+        if (
+            currentEffects.Any(effect => effect.effects == Effects.Effect.Poison) &&
+            !currentEffects.Any(effect => effect.effects == Effects.Effect.Immunity)
+        )
+        {
+            timeSinceLastTickPoison += Time.fixedDeltaTime;
+
+            if (timeSinceLastTickPoison >= 1f)
+            {
+                var poisonEffect = currentEffects.FirstOrDefault(effect => effect.effects == Effects.Effect.Poison);
+                float strength = poisonEffect != null ? poisonEffect.effectStrength : 0f;
+                mana = Mathf.Clamp(mana - (1f * strength), 0f, 100f);
+                timeSinceLastTickPoison = 0f;
+            }
+        }
+
+        //if player has bleeding effect, reduce health
+        if (
+            currentEffects.Any(effect => effect.effects == Effects.Effect.Bleeding) &&
+            !currentEffects.Any(effect => effect.effects == Effects.Effect.Immunity)
+        )
+        {
+            timeSinceLastTickBleed += Time.fixedDeltaTime;
+
+            if (timeSinceLastTickBleed >= 1f)
+            {
+                var bleedingEffect = currentEffects.FirstOrDefault(effect => effect.effects == Effects.Effect.Bleeding);
+                float strength = bleedingEffect != null ? bleedingEffect.effectStrength : 0f;
+                health = Mathf.Clamp(health - (1f * strength), 0f, 100f);
+                UpdateBars();
+                timeSinceLastTickBleed = 0f;
+            }
+        }
     }
 
     private void Dash()
     {
+        if (isStunned) return;
+
         canMove = false;
 
         Vector2 dashDirection = movement.sqrMagnitude > 0.01f ? movement : lastLookDirection;
@@ -192,26 +277,29 @@ public class PlayerController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     } 
-}
 
-[System.Serializable]
-public class Effects
-{
-    public Effect[] effects;
-    public float effectStrength;
-    public float effectLength;
-
-    public enum Effect
+    public void ApplyEffect(Effects.Effect effectType, float strength, float length)
     {
-        Haste,          //Zorgt voor snellere beweging (3 levels)
-        Strength,       //Zorgt voor meer schade (3 levels)
-        Protection,     //Zorgt voor schade blokkering (4 levels)
-        Slowness,       //Zorgt voor langzamere beweging (3 levels)
-        Poison,         //Vergiftigd de speler (3 levels)
-        Bleeding,       //Net zoals vergif maar speler doet ook minder schade (1 level) 
-        Luck,           //Geeft de speler meer geluk ofzo?? (3 levels)
-        SoulStalk,      //Vijanden in een bepaalde range van de speler krijgen schade per seconde (1 level)
-        ManaProtection, //Zorgt voor een tijd dat de speler geen mana verliest (1 level)
-        Immunity        //Geeft de speler immunity tegen poison (1 level)
+        // Kijk of het effect al actief is
+        var existing = currentEffects.FirstOrDefault(e => e.effects == effectType);
+        if (existing != null)
+        {
+            // Refresh de duur en sterkte als het effect al bestaat
+            existing.effectLength = Mathf.Max(existing.effectLength, length);
+            existing.effectStrength = Mathf.Max(existing.effectStrength, (int)strength);
+        }
+        else
+        {
+            // Voeg nieuw effect toe
+            var newEffect = new Effects
+            {
+                effects = effectType,
+                effectStrength = (int)strength,
+                effectLength = length
+            };
+            var list = currentEffects.ToList();
+            list.Add(newEffect);
+            currentEffects = list.ToArray();
+        }
     }
 }

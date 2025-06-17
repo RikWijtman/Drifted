@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585d7b8f954535d499e87af688019a4d, type: 3}
   m_Name: Shield
   m_EditorClassIdentifier: 
-  itemName: Shield
+  itemName: Magical Shield
   itemIcon: {fileID: 21300000, guid: b55158b51972f4d45b054c4086495b20, type: 3}

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    public List<Image> inventorySlots; // Verwijzingen naar de vakjes in de UI
+    public List<Image> toolbarSlots; // Verwijzingen naar de vakjes in de UI
     public Sprite emptySlotSprite; // Sprite die een leeg vakje vertegenwoordigt
 
     private List<Sprite> itemIcons = new List<Sprite>(); // Huidige iconen in de inventory
@@ -18,12 +18,12 @@ public class InventoryUI : MonoBehaviour
     // Voeg een item toe aan de inventory
     public void AddItem(Sprite itemSprite)
     {
-        for (int i = 0; i < inventorySlots.Count; i++)
+        for (int i = 0; i < toolbarSlots.Count; i++)
         {
             if (itemIcons.Count <= i || itemIcons[i] == null)
             {
                 // Update het vakje met het nieuwe item
-                inventorySlots[i].sprite = itemSprite;
+                toolbarSlots[i].sprite = itemSprite;
 
                 // Sla het item op
                 if (itemIcons.Count <= i)
@@ -45,7 +45,7 @@ public class InventoryUI : MonoBehaviour
     // Verwijder een item van een bepaalde index
     public void RemoveItem(int index)
     {
-        if (index < 0 || index >= inventorySlots.Count)
+        if (index < 0 || index >= toolbarSlots.Count)
         {
             Debug.LogWarning("Invalid inventory index!");
             return;
@@ -58,13 +58,13 @@ public class InventoryUI : MonoBehaviour
         }
 
         // Zet de sprite terug naar leeg
-        inventorySlots[index].sprite = emptySlotSprite;
+        toolbarSlots[index].sprite = emptySlotSprite;
     }
 
     // Leeg de inventory
     public void ClearInventoryUI()
     {
-        foreach (Image slot in inventorySlots)
+        foreach (Image slot in toolbarSlots)
         {
             slot.sprite = emptySlotSprite;
         }

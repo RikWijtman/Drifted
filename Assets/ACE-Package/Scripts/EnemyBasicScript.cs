@@ -6,12 +6,13 @@ using System.Collections.Generic;
 public class EnemyBasicScript : MonoBehaviour
 {
     public Enemy enemyType;
-    public Moves[] moveset;
-    public float dashSpeed = 10f; // Hoe snel de dash is
-    public float dashDuration = 0.2f; // Hoe lang de dash duurt
-    public float attackTimeOut = 0.5f;
-    public float stunTime = 1.5f;
-    public Transform healthFill;
+    private Moves[] moveset; // Moveset of the enemy, fetched from the enemy object
+    private float dashSpeed = 10f; // Speed of the dash
+    private float dashDuration = 0.2f; // How long the dash lasts
+    public float attackTimeOut = 0.5f; //short time after an attack before the enemy can attack again
+    public float stunTime = 1.5f; // How long the enemy is stunned after hitting a player who's blocking
+    public Transform healthFill; // Reference to the health bar fill transform
+    public GameObject notification; // Notification prefab to notify the player when the enemy sees them
 
     public IdleStyle idleStyle;
 
@@ -43,6 +44,7 @@ public class EnemyBasicScript : MonoBehaviour
     private bool isBusy = false;      // Is the enemy busy?
     private bool stunned = false;     // Is the enemy Stunned?
     private bool isBlock = false;     // Is the enemy blocking?
+    private bool performingDash = false; // Is the enemy currently performing a dash?
     private float blockAmount = 0;    // What percentage of damage does the enemy block? - fetched from enemy moveset
     private Queue<Vector2> currentPath = new();  // Current path the enemy is following or has to follow
     private Collider2D enemyCollider; // Enemy collider
@@ -51,6 +53,18 @@ public class EnemyBasicScript : MonoBehaviour
     private DamageFlash flasher;      // Script for the enemy flash
     private bool isAgro = false;      // Is the enemy in an aggresive state
     private float AOTAgroTimer = 0;
+    private bool hasNotifiedPlayer = false; // Has the enemy notified the player
+    private GameObject notifInstance; // Voeg dit veld toe bovenaan bij de andere velden
+
+    private int currentPatrolIndex = 0;
+    private float patrolPointThreshold = 0.1f; // Hoe dicht je bij een punt moet zijn om hem als "bereikt" te zien
+
+    private Vector2? roamingTarget = null;
+    private Vector2 startPosition;
+
+    private float roamingMoveTimer = 0f;
+    private float roamingPauseTimer = 0f;
+    private bool isRoamingPaused = false;
 
     private Moves[] GetMoves()
     {
@@ -60,6 +74,8 @@ public class EnemyBasicScript : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
+
         //get the player and it's scripts
         playerScript = FindObjectOfType<PlayerController>();
         if (playerScript == null)
@@ -71,8 +87,9 @@ public class EnemyBasicScript : MonoBehaviour
         playerBehaviour = player.GetComponent<PlayerBehaviour>();
         playerCombatScript = player.GetComponent<CombatController>();
         enemyPathfinder = GetComponent<EnemyPathfinding>();
-        enemyCollider = GetComponent<Collider2D>();
         enemyPathfinder.player = player;
+        enemyPathfinder.enemyObject = enemyType; // <-- Voeg deze regel toe
+        enemyCollider = GetComponent<Collider2D>();
         flasher = GetComponent<DamageFlash>();
 
         //check if player is found
@@ -83,7 +100,6 @@ public class EnemyBasicScript : MonoBehaviour
 
         //get the rigidBody and animator of the enemy
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
 
         //fetch and set stats and moves of the enemy 
         moveset = enemyType.moveset;
@@ -113,6 +129,8 @@ public class EnemyBasicScript : MonoBehaviour
         {
             closedRange = moveWithSmallestRange.moveRange;
         }
+
+        startPosition = transform.position; 
     }
 
     //function to check if a move is off cooldown
@@ -127,15 +145,38 @@ public class EnemyBasicScript : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (notifInstance != null)
+        {
+            notifInstance.transform.position = transform.position + Vector3.up;
+        }
+        
+        if (AOTAgroTimer > 0)
+        {
+            AOTAgroTimer--;
+        }
+        
         //check if the enemy is currently performing a block, attack or etc.
-        if (isBusy || stunned || !isAgro)
+        if (isBusy || stunned || performingDash)
         {
             return;
         }
 
         if (!isAgro)
         {
-
+            if (idleStyle == IdleStyle.Patrol)
+            {
+                Patrol();
+            }
+            else if (idleStyle == IdleStyle.Roaming)
+            {
+                Roaming();
+            }
+            else if (idleStyle == IdleStyle.Idle)
+            {
+                rb.velocity = Vector2.zero;
+                UpdateAnimator(Vector2.zero);
+            }
+            return;
         }
         //if the enemy can't see the player, go to the last seen position of the player                          *****
         else if (!enemyPathfinder.CanSeePlayer() && enemyPathfinder.lastSeenPosition != null)
@@ -145,6 +186,7 @@ public class EnemyBasicScript : MonoBehaviour
             {
                 //otherwise create a new path, from the enemy to the last seen position of the player
                 var path = Pathfinder.FindPath(transform.position, enemyPathfinder.lastSeenPosition.Value);
+                Debug.Log($"[PathRequest] Enemy pos: {transform.position}, LastSeen: {enemyPathfinder.lastSeenPosition.Value}");
                 if (path != null && path.Count > 0)
                 {
                     currentPath = new Queue<Vector2>(path);
@@ -155,26 +197,24 @@ public class EnemyBasicScript : MonoBehaviour
         }
         else if (player != null && enemyPathfinder.CanSeePlayer())
         {
+            if (!hasNotifiedPlayer)
+            {
+                //if the enemy can see the player, notify the player
+                if (notification != null)
+                {
+                    notifInstance = Instantiate(notification, transform.position + Vector3.up, Quaternion.identity);
+                    Destroy(notifInstance, 0.5f);
+                }
+                hasNotifiedPlayer = true;
+            }
             //get the distance to the player
             float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
             //get direction and speed for animations
             Vector2 direction = (player.position - transform.position).normalized;
 
-            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-            {
-                if (direction.x > 0) animator.SetFloat("Direction", 2); // Right
-                else animator.SetFloat("Direction", 1); // Left
-            }
-            else
-            {
-                if (direction.y > 0) animator.SetFloat("Direction", 3); // Up
-                else animator.SetFloat("Direction", 0); // Down
-            }
+            UpdateAnimator(direction);
 
-            animator.SetFloat("Speed", direction.magnitude);
-
-            
             //check if the enemy can attack
             if (canAttack)
             {
@@ -216,10 +256,11 @@ public class EnemyBasicScript : MonoBehaviour
                         {
                             case Moves.AttackTypes.Melee:
                             case Moves.AttackTypes.Ranged:
+                            case Moves.AttackTypes.Special:
                                 StartCoroutine(PerformAttack(selectedMove));
                                 break;
                             case Moves.AttackTypes.Dash:
-                                Dash(selectedMove);
+                                StartCoroutine(Dash(selectedMove));
                                 break;
                             case Moves.AttackTypes.Dodge:
                                 Dodge(selectedMove);
@@ -246,11 +287,6 @@ public class EnemyBasicScript : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
             animator.SetFloat("Speed", 0);
-        }
-
-        if (AOTAgroTimer > 0)
-        {
-            AOTAgroTimer--;
         }
     }
 
@@ -289,6 +325,44 @@ public class EnemyBasicScript : MonoBehaviour
 
         rb.isKinematic = true;
 
+        GameObject circleInstance = null;
+
+        if (move.moveType == Moves.AttackTypes.Special)
+        {
+            if (move.specialType == Moves.SpecialTypes.Circle)
+            {
+                // Instantieer de cirkel ZONDER parent
+                if (move.circleIndicatorPrefab != null)
+                {
+                    circleInstance = Instantiate(move.circleIndicatorPrefab, transform.position, Quaternion.identity);
+                    float scale = move.specialRange * 2f;
+                    circleInstance.transform.localScale = new Vector3(scale, scale, 1f);
+
+                    
+                }
+            }
+            else if (move.specialType == Moves.SpecialTypes.Straight)
+            {
+                if (move.circleIndicatorPrefab != null)
+                {
+                    // Richting naar speler
+                    Vector2 dir = (player.position - transform.position).normalized;
+                    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+                    // Instantieer lijn
+                    circleInstance = Instantiate(move.circleIndicatorPrefab, transform.position, Quaternion.Euler(0, 0, angle));
+                    // Zet de schaal: lengte = specialRange, dikte = 1f
+                    circleInstance.transform.localScale = new Vector3(move.specialRange, 1f, 1f);
+
+                    // Verplaats de lijn zodat het beginpunt bij de vijand ligt
+                    circleInstance.transform.position = transform.position + (Vector3)(dir * (move.specialRange / 2f));
+                }
+            }
+            var sr = circleInstance.GetComponent<SpriteRenderer>();
+                    if (sr != null)
+                        sr.color = move.indicatorColor;
+        }
+
         if (isChargedMove)
         {
             if (animator != null)
@@ -314,6 +388,14 @@ public class EnemyBasicScript : MonoBehaviour
         if (move.moveAnim != null)
         {
             yield return new WaitForSeconds(move.moveAnim.length); // Korte animatie tijd voordat damage wordt gedaan
+        }
+
+        
+
+        // Verwijder de cirkel na de aanval
+        if (circleInstance != null)
+        {
+            Destroy(circleInstance);
         }
 
         rb.isKinematic = false;
@@ -352,9 +434,29 @@ public class EnemyBasicScript : MonoBehaviour
                 Debug.LogWarning($"Geen projectile prefab ingesteld voor move: {move.moveName}");
             }
         }
+        else if (move.specialType == Moves.SpecialTypes.Circle && move.moveType == Moves.AttackTypes.Special)
+        {
+            DealDamage(move, move.specialRange, true);
+        }
+        else if (move.specialType == Moves.SpecialTypes.Straight && move.moveType == Moves.AttackTypes.Special)
+        {
+            // Check of speler in de lijn zit
+            Vector2 dir = (player.position - transform.position).normalized;
+            Vector2 toPlayer = (player.position - transform.position);
+            float distance = toPlayer.magnitude;
+            float angle = Vector2.Angle(dir, toPlayer.normalized);
+
+            // Dikte van de lijn is 1f, dus check afstand tot lijn
+            float perpendicular = Mathf.Abs(Vector2.Perpendicular(dir).normalized.x * toPlayer.x + Vector2.Perpendicular(dir).normalized.y * toPlayer.y);
+
+            if (distance <= move.specialRange && perpendicular < 0.5f) // 0.5f is de helft van de dikte
+            {
+                DealDamage(move, move.specialRange, true);
+            }
+        }
         else if (isChargedMove || !playerCombatScript.isBlock)
         {
-            DealDamage(move.damage, move.moveRange, true);
+            DealDamage(move, move.moveRange, true);
         }
         else
         {
@@ -379,6 +481,7 @@ public class EnemyBasicScript : MonoBehaviour
     {
         Vector2 direction = (player.position - transform.position).normalized;
         Move(direction, speed);
+        UpdateAnimator(direction);
     }
 
     private void ChaseLastSeenPosition()
@@ -396,6 +499,7 @@ public class EnemyBasicScript : MonoBehaviour
         {
             Vector2 dir = (nextPoint - (Vector2)transform.position).normalized;
             Move(dir, speed);
+            UpdateAnimator(dir);
         }
     }
 
@@ -404,14 +508,47 @@ public class EnemyBasicScript : MonoBehaviour
         rb.velocity = dir * spd;
     }
 
-    public void Dash(Moves dashMove)
+    public IEnumerator Dash(Moves dashMove)
     {
-        if (player != null)
+        if (player != null )
         {
+            isBusy = true;
+            rb.isKinematic = true;
             currentDashMove = dashMove;
+            rb.velocity = Vector2.zero; 
             Vector2 dashDirection = (player.position - transform.position).normalized;
 
-            isBusy = true;
+            GameObject dashIndicator = null;
+            if (dashMove.dashIndicatorPrefab != null)
+            {
+                float angle = Mathf.Atan2(dashDirection.y, dashDirection.x) * Mathf.Rad2Deg;
+                dashIndicator = Instantiate(dashMove.dashIndicatorPrefab, transform.position, Quaternion.Euler(0, 0, angle));
+                dashIndicator.transform.localScale = new Vector3(dashMove.dashSpeed, 1f, 1f); // dashSpeed als lengte, pas aan indien gewenst
+                dashIndicator.transform.position = transform.position + (Vector3)(dashDirection * (dashMove.dashSpeed / 2f));
+                var sr = dashIndicator.GetComponent<SpriteRenderer>();
+                if (sr != null)
+                    sr.color = dashMove.dashIndicatorColor;
+            }
+
+            if (animator != null)
+            {
+                animator.SetBool(dashMove.moveName, true);
+            }
+
+            if (dashMove.moveAnim != null)
+            {
+                yield return new WaitForSeconds(dashMove.moveAnim.length);
+            }
+
+            if (animator != null)
+            {
+                animator.SetBool(dashMove.moveName, false);
+            }
+
+            if (dashIndicator != null)
+                Destroy(dashIndicator);
+
+            rb.isKinematic = false;
             isDash = true;
             rb.velocity = dashDirection * dashSpeed;
 
@@ -503,7 +640,7 @@ public class EnemyBasicScript : MonoBehaviour
     {
         if (isDash && rb.velocity.magnitude > 0.1f) // only during dash
         {
-            DealDamage(currentDashMove.damage, 0, false);
+            DealDamage(currentDashMove, 0, false);
         }
     }
 
@@ -532,13 +669,26 @@ public class EnemyBasicScript : MonoBehaviour
         healthFill.localPosition = new Vector3(currentHealthPercentage / 2f - 1 / 2f, 0, 0);
     }
 
-    public void DealDamage(float dam, float range, bool isMelee)
+    public void DealDamage(Moves move, float range, bool isMelee)
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
         if (distanceToPlayer <= range || !isMelee)
         {
-            playerScript.TakeDamage(dam);
+            playerScript.TakeDamage(move.damage);
+
+            // Voeg effecten toe aan de speler
+            if (move != null && move.attackEffect != null)
+            {
+                foreach (var effect in move.attackEffect)
+                {
+                    playerScript.ApplyEffect(
+                        effect.effects,
+                        effect.effectStrength,
+                        effect.effectLength
+                    );
+                }
+            }
         }
     }
 
@@ -588,12 +738,156 @@ public class EnemyBasicScript : MonoBehaviour
             return true;
         }
     }
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         if (enemyType != null)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, enemyType.detectionRange);
+
+            if (enemyType.moveset != null)
+            {
+                // Houd bij hoe vaak een bepaalde range al is getekend
+                Dictionary<float, int> rangeCounts = new Dictionary<float, int>();
+                float pixelOffset = 0.02f; // ongeveer 1 pixel in Unity units
+
+                for (int i = 0; i < enemyType.moveset.Length; i++)
+                {
+                    Moves move = enemyType.moveset[i];
+                    float range = move.moveRange;
+
+                    // Bepaal de offset voor deze range
+                    int count = 0;
+                    if (rangeCounts.ContainsKey(range))
+                    {
+                        count = rangeCounts[range] + 1;
+                        rangeCounts[range] = count;
+                    }
+                    else
+                    {
+                        rangeCounts[range] = 0;
+                    }
+                    float adjustedRange = range + (count * pixelOffset);
+
+                    // Kies kleur op basis van moveType
+                    switch (move.moveType)
+                    {
+                        case Moves.AttackTypes.Melee:
+                            Gizmos.color = Color.yellow;
+                            break;
+                        case Moves.AttackTypes.Ranged:
+                            Gizmos.color = Color.blue;
+                            break;
+                        case Moves.AttackTypes.Special:
+                            Gizmos.color = Color.magenta;
+                            break;
+                        case Moves.AttackTypes.Dash:
+                            Gizmos.color = Color.green;
+                            break;
+                        case Moves.AttackTypes.Dodge:
+                            Gizmos.color = Color.cyan;
+                            break;
+                        case Moves.AttackTypes.Block:
+                            Gizmos.color = Color.white;
+                            break;
+                        default:
+                            Gizmos.color = Color.gray;
+                            break;
+                    }
+
+                    Gizmos.DrawWireSphere(transform.position, adjustedRange);
+                }
+            }
+
+            if (patrollingPoints != null && patrollingPoints.Length > 0)
+            {
+                Gizmos.color = new Color(1f, 0.5f, 0f, 0.5f);
+                foreach (var point in patrollingPoints)
+                {
+                    Gizmos.DrawSphere(point, 0.1f); 
+                }
+            }
         }
+
+        if (idleStyle == IdleStyle.Roaming)
+        {
+            Gizmos.color = new Color(1f, 0.5f, 0f, 0.5f); 
+            Vector2 center = (startPosition == Vector2.zero) ? (Vector2)transform.position : startPosition;
+            Gizmos.DrawWireSphere(center, roamingRange);
+        }
+    }
+
+    private void Patrol()
+    {
+        if (patrollingPoints == null || patrollingPoints.Length == 0)
+            return;
+
+        Vector2 target = patrollingPoints[currentPatrolIndex];
+        Vector2 direction = (target - (Vector2)transform.position).normalized;
+        Move(direction, speed);
+        UpdateAnimator(direction); // <-- voeg deze regel toe
+
+        float distance = Vector2.Distance(transform.position, target);
+        if (distance < patrolPointThreshold)
+        {
+            currentPatrolIndex = (currentPatrolIndex + 1) % patrollingPoints.Length;
+        }
+    }
+
+    private void Roaming()
+    {
+        // Pauzeer om de 10 seconden voor 2 seconden
+        if (isRoamingPaused)
+        {
+            roamingPauseTimer -= Time.fixedDeltaTime;
+            rb.velocity = Vector2.zero;
+            UpdateAnimator(Vector2.zero);
+            if (roamingPauseTimer <= 0f)
+            {
+                isRoamingPaused = false;
+                roamingMoveTimer = 0f;
+            }
+            return;
+        }
+        else
+        {
+            roamingMoveTimer += Time.fixedDeltaTime;
+            if (roamingMoveTimer >= 7f)
+            {
+                isRoamingPaused = true;
+                roamingPauseTimer = 2f;
+                rb.velocity = Vector2.zero;
+                UpdateAnimator(Vector2.zero);
+                return;
+            }
+        }
+
+        if (roamingTarget == null || Vector2.Distance(transform.position, roamingTarget.Value) < patrolPointThreshold)
+        {
+            // Kies een nieuw random punt binnen roamingRange
+            Vector2 randomCircle = Random.insideUnitCircle * roamingRange;
+            roamingTarget = startPosition + randomCircle;
+        }
+
+        Vector2 direction = ((Vector2)roamingTarget - (Vector2)transform.position).normalized;
+        Move(direction, speed);
+        UpdateAnimator(direction);
+    }
+
+    private void UpdateAnimator(Vector2 direction)
+    {
+        if (animator == null) return;
+
+        // Richting bepalen
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        {
+            animator.SetFloat("Direction", direction.x > 0 ? 2 : 1); // 2 = rechts, 1 = links
+        }
+        else
+        {
+            animator.SetFloat("Direction", direction.y > 0 ? 3 : 0); // 3 = omhoog, 0 = omlaag
+        }
+
+        animator.SetFloat("Speed", direction.magnitude);
     }
 }
