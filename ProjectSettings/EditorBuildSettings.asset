@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/PeacefulWaters.unity
+    path: Assets/5 - Scenes/0 - PeacefulWaters.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/HomeScreen.unity
+    path: Assets/5 - Scenes/1 - HomeScreen.unity
     guid: 6ec2f56e718140341891aa42f5721ceb
+  - enabled: 1
+    path: Assets/5 - Scenes/2 - CentralArea.unity
+    guid: 2a659f8db6ba06647b70739b5b0de0c5
   m_configObjects: {}

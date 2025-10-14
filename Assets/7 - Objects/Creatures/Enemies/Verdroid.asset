@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ba04016d34fe148853ca251618492b, type: 3}
+  m_Name: Verdroid
+  m_EditorClassIdentifier: 
+  enemyName: Verdroid
+  description: A parasite living in the beast, it has a fragile seethrough shell
+    around it, it produces electricity to attack.
+  enemySprite: {fileID: -271444359, guid: 3645e961e5db3db41bda1265f9cdff14, type: 3}
+  difficulty: 2
+  health: 15
+  speed: 6
+  detectionRange: 10
+  canCluster: 1
+  hostility: 0
+  moveset:
+  - moveName: Charged
+    moveType: 6
+    damage: 15
+    cooldown: 5
+    probability: 4.9705305
+    baseProbability: 10
+    moveRange: 4
+    chargeTime: 1.2
+    attackEffect: []
+    moveAnim: {fileID: 7400000, guid: 94f975c2a43ac094f981bdc6211417b8, type: 2}
+    blockPercentage: 0
+    blockTime: 3
+    dashSpeed: 0
+    dashDuration: 0
+    dashIndicatorPrefab: {fileID: 0}
+    dashIndicatorColor: {r: 0, g: 0, b: 0, a: 0}
+    dodgeSpeed: 10
+    dodgeDuration: 0.2
+    healingAmount: 0
+    speedBuff: 0
+    attackBuff: 0
+    cooldownBuff: 0
+    projectile: {fileID: 4126164419378707069, guid: 897ab526a235df94e8b87e423f51593d, type: 3}
+    projectileSpeed: 16
+    specialType: 0
+    specialRange: 5
+    circleIndicatorPrefab: {fileID: 0}
+    indicatorColor: {r: 0, g: 0, b: 0, a: 0}
+  - moveName: Dodge
+    moveType: 3
+    damage: 0
+    cooldown: 5
+    probability: 16.581533
+    baseProbability: 20
+    moveRange: 2.4
+    chargeTime: 0
+    attackEffect: []
+    moveAnim: {fileID: 0}
+    blockPercentage: 0
+    blockTime: 3
+    dashSpeed: 20
+    dashDuration: 0.4
+    dashIndicatorPrefab: {fileID: 0}
+    dashIndicatorColor: {r: 0, g: 0, b: 0, a: 0}
+    dodgeSpeed: 10
+    dodgeDuration: 0.2
+    healingAmount: 0
+    speedBuff: 0
+    attackBuff: 0
+    cooldownBuff: 0
+    projectile: {fileID: 0}
+    projectileSpeed: 0
+    specialType: 0
+    specialRange: 5
+    circleIndicatorPrefab: {fileID: 0}
+    indicatorColor: {r: 0, g: 0, b: 0, a: 0}
+  - moveName: Stun
+    moveType: 6
+    damage: 5
+    cooldown: 4
+    probability: 70
+    baseProbability: 70
+    moveRange: 6
+    chargeTime: 0
+    attackEffect: []
+    moveAnim: {fileID: 7400000, guid: 94f975c2a43ac094f981bdc6211417b8, type: 2}
+    blockPercentage: 0
+    blockTime: 3
+    dashSpeed: 20
+    dashDuration: 0.4
+    dashIndicatorPrefab: {fileID: 0}
+    dashIndicatorColor: {r: 0, g: 0, b: 0, a: 0}
+    dodgeSpeed: 10
+    dodgeDuration: 0.2
+    healingAmount: 0
+    speedBuff: 0
+    attackBuff: 0
+    cooldownBuff: 0
+    projectile: {fileID: 4126164419378707069, guid: 897ab526a235df94e8b87e423f51593d, type: 3}
+    projectileSpeed: 8
+    specialType: 0
+    specialRange: 5
+    circleIndicatorPrefab: {fileID: 0}
+    indicatorColor: {r: 0, g: 0, b: 0, a: 0}
