@@ -26,9 +26,9 @@ public class PlayerInteractionManager : MonoBehaviour
             // Toon prompt (optioneel)
             // closest.ShowPrompt();
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(closest.interactionKey))
             {
-                closest.PickupItem();
+                closest.Interact();
             }
         }
     }

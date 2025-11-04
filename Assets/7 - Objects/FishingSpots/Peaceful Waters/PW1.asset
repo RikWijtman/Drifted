@@ -15,7 +15,7 @@ MonoBehaviour:
   fishChances:
   - fish: {fileID: 11400000, guid: ffd24680c2e905c4c988629768d1855d, type: 2}
     catchChance: 0
-  - fish: {fileID: 11400000, guid: 3153bdaf41c498b498fb6eaae1467524, type: 2}
+  - fish: {fileID: 11400000, guid: 8b2afca883f9b824181ad4c5705ff8e2, type: 2}
     catchChance: 84
   - fish: {fileID: 11400000, guid: 3153bdaf41c498b498fb6eaae1467524, type: 2}
     catchChance: 15

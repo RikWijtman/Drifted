@@ -29,7 +29,7 @@ public class AreaTrigger : MonoBehaviour
         // Check of deze trigger al geactiveerd is via PlayerPrefs
         if (!requireEvent && PlayerPrefs.GetInt("AreaTrigger_" + triggerID, 0) == 1)
         {
-            hasTriggered = false;
+            hasTriggered = true;
         }
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerController = player.GetComponent<PlayerController>();
@@ -50,7 +50,7 @@ public class AreaTrigger : MonoBehaviour
 
     private void TriggerDialogue()
     {
-        if (dialogManager != null)
+        if (dialogManager != null && !hasTriggered)
         {
             dialogManager.TriggerDialog(
                 dialog,
@@ -58,6 +58,7 @@ public class AreaTrigger : MonoBehaviour
                 autoAdvanceDialog,
                 autoAdvanceTime
             );
+
             if (!requireEvent) {
                 hasTriggered = true;
                 PlayerPrefs.SetInt("AreaTrigger_" + triggerID, 1);

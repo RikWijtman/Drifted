@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class InteractableItem : MonoBehaviour
 {
@@ -7,7 +8,8 @@ public class InteractableItem : MonoBehaviour
     public string interactionType = "Item";
     public float interactionRange = 2f;
     public float particleRange = 20f;
-    public string interactionPrompt = "Press E to interact";
+    public KeyCode interactionKey = KeyCode.E;
+    private string interactionPrompt = "";
 
     [Header("Item Specific Settings")]
     public Item itemData;
@@ -21,6 +23,19 @@ public class InteractableItem : MonoBehaviour
     public float popupHeightOffset = 2f;
     public float popupFloatSpeed = 1f;
     public float popupFloatAmplitude = 0.2f;
+
+    [Header("Scroll UI")]
+    public GameObject scrollNoticePanel;    // Sleep hier je ScrollNotice panel in
+    public TMP_Text scrollTitle;            // Titel tekst in het ScrollNotice panel
+    public TMP_Text scrollDescription;      // Beschrijving tekst in het ScrollNotice panel
+
+    [Header("Nerve Stone Visuals")]
+    public SpriteRenderer NerveStoneTop;
+    public SpriteRenderer NerveStoneBottom;
+    public Sprite[] NerveStoneActivatedTop;
+    public Sprite[] NerveStoneActivatedBottom;
+    public TransportPlayer transportPlayerScript;
+    private int currentNerveState = 0;
 
     private bool isInteracted = false;
     private bool particlesShowing = false;
@@ -43,6 +58,8 @@ public class InteractableItem : MonoBehaviour
 
     private void Start()
     {
+        interactionPrompt = $"Press [{interactionKey}] to interact";
+
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             player = playerObj.transform;
@@ -70,18 +87,6 @@ public class InteractableItem : MonoBehaviour
             }
         }
 
-        // Alleen het dichtstbijzijnde item mag reageren
-        /*if (closest == this)
-        {
-            // Toon prompt (optioneel)
-            // Debug.Log(interactionPrompt);
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                PickupItem();
-            }
-        }*/
-
         float distance = Vector3.Distance(player.position, transform.position);
 
         if (distance <= interactionRange)
@@ -106,35 +111,48 @@ public class InteractableItem : MonoBehaviour
         }
     }
 
-    public void PickupItem()
+    public void Interact()
     {
-
         bool pickedUp = false;
+
+        if (interactionType == "Nervestone") {
+            ActivateNerveStone();
+            Debug.Log("Nerve Stone activated to state " + currentNerveState);
+        }
 
         if (inventoryUI != null && itemData != null)
         {
-            pickedUp = inventoryUI.AddItem(itemData);
+            if (interactionType == "Item") {
+                pickedUp = inventoryUI.AddItem(itemData);
 
-            if (pickedUp) {
-                isInteracted = true;
-                if (pickedUp && itemData.itemName == "Fishing Rod")
-                {
-                    var fishingManager = FindObjectOfType<FishingMinigameManager>();
-                    fishingManager?.SetFishingRodStatus(true);
-                    PlayerPrefs.SetInt("HasFishingRod", 1);
+                if (pickedUp) {
+                    isInteracted = true;
+                    if (pickedUp && itemData.itemName == "Fishing Rod")
+                    {
+                        var fishingManager = FindObjectOfType<FishingMinigameManager>();
+                        fishingManager?.SetFishingRodStatus(true);
+                        PlayerPrefs.SetInt("HasFishingRod", 1);
+                    }
+                    else if (pickedUp && itemData.itemName == "Horn")
+                    {
+                        inventoryUI.SetHasHorn(true);
+                    }
+                    else if (pickedUp)
+                    {
+                        var combatController = FindObjectOfType<CombatController>();
+                        if (itemData.itemName == "Magical Sword")
+                            combatController?.SetSwordStatus(true);
+                        else if (itemData.itemName == "Magical Shield")
+                            combatController?.SetShieldStatus(true);
+                    }
                 }
-                else if (pickedUp && itemData.itemName == "Horn")
-                {
-                    inventoryUI.SetHasHorn(true);
-                }
-                else if (pickedUp)
-                {
-                    var combatController = FindObjectOfType<CombatController>();
-                    if (itemData.itemName == "Magical Sword")
-                        combatController?.SetSwordStatus(true);
-                    else if (itemData.itemName == "Magical Shield")
-                        combatController?.SetShieldStatus(true);
-                }
+            } else if (interactionType == "Scroll") {
+                // Open ScrollNotice panel en vul titel + description
+                OpenScrollNotice();
+                // Scroll wordt opgepakt/gelezen en item verdwijnt
+                pickedUp = true;
+            }else{
+                Debug.Log("Interaction type not supported for pickup.");
             }
         }
 
@@ -147,6 +165,43 @@ public class InteractableItem : MonoBehaviour
         }
     }
 
+    private void ActivateNerveStone()
+    {
+        currentNerveState++;
+        int maxState = Mathf.Min(NerveStoneActivatedTop.Length, NerveStoneActivatedBottom.Length);
+        if (currentNerveState >= maxState)
+        {
+            currentNerveState = maxState - 1; 
+            transportPlayerScript.TestFunction();
+        }
+
+        if (NerveStoneTop != null && NerveStoneActivatedTop.Length >= currentNerveState)
+        {
+            NerveStoneTop.sprite = NerveStoneActivatedTop[currentNerveState];
+        }
+        if (NerveStoneBottom != null && NerveStoneActivatedBottom.Length >= currentNerveState)
+        {
+            NerveStoneBottom.sprite = NerveStoneActivatedBottom[currentNerveState];
+        }
+    }
+
+    private void OpenScrollNotice()
+    {
+        if (scrollNoticePanel != null)
+        {
+            scrollNoticePanel.SetActive(true);
+
+            if (scrollTitle != null)
+                scrollTitle.text = itemData != null ? itemData.itemName : "";
+
+            if (scrollDescription != null)
+                scrollDescription.text = itemData != null ? itemData.description : "";
+        }
+        else
+        {
+            Debug.LogWarning("ScrollNotice panel not assigned on " + gameObject.name);
+        }
+    }
 
     private void CreatePopup()
     {

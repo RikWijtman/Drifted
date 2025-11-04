@@ -219,6 +219,34 @@ PrefabInstance:
       propertyPath: m_text
       value: Quit
       objectReference: {fileID: 0}
+    - target: {fileID: 8275091494101531392, guid: c271bb1737cc5984eb038beaddd581c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275091494101531392, guid: c271bb1737cc5984eb038beaddd581c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275091494101531392, guid: c271bb1737cc5984eb038beaddd581c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 929233474}
+    - target: {fileID: 8275091494101531392, guid: c271bb1737cc5984eb038beaddd581c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275091494101531392, guid: c271bb1737cc5984eb038beaddd581c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275091494101531392, guid: c271bb1737cc5984eb038beaddd581c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: HomeScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275091494101531392, guid: c271bb1737cc5984eb038beaddd581c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1388,6 +1416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HelpCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5955670321160604125, guid: 7a5ba412409d8884b9ea0d44e7008b14, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1722,6 +1754,10 @@ PrefabInstance:
     - target: {fileID: 5955670321160604125, guid: 7a5ba412409d8884b9ea0d44e7008b14, type: 3}
       propertyPath: m_Name
       value: ExtrasCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5955670321160604125, guid: 7a5ba412409d8884b9ea0d44e7008b14, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

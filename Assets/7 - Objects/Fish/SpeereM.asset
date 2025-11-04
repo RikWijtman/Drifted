@@ -20,8 +20,9 @@ MonoBehaviour:
   nutrition: 2
   regeneration: 0
   shield: 0
-  fishSpeed: 120
+  fishSpeed: 90
   fishWeight: 1.2
   wildness: 5
-  fishSize: 80
+  fishSize: 110
+  fishStaminaMultiplier: 0.03
   effect: []

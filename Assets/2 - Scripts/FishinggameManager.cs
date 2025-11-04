@@ -17,6 +17,7 @@ public class FishingMinigameManager : MonoBehaviour
     public Image ringProgress; // UI-element voor de visuele ring
     public RectTransform ringProgressTra; // De cirkel die de voortgang weergeeft
     public FeedbackManager feedbackManager; // Verwijzing naar de FeedbackManager
+    public Image staminaBar; // Stamina bar UI
 
     public float targetMoveSpeed = 100f; // Snelheid van het bewegende rondje
     public float hookMoveSpeed = 200f; // Snelheid van de hengel
@@ -32,6 +33,9 @@ public class FishingMinigameManager : MonoBehaviour
     private float timeToChangeDirection = 2f; // Hoe vaak de richting verandert
     public bool hasFishingRod = false; // Controleert of de speler de hengel heeft
     private Vector2 fishSize = new Vector2(80, 80); //grootte van de vis is het spel
+    private float stamina = 100f; // Stamina van de speler
+    private float maxStamina = 100f;
+    private float staminaMultiplier = 0.03f; // Snelheid waarmee stamina verliest
 
     public FishData currentFish; // De gevangen vis
     private FishingSpotConnection currentFishingSpotScript;
@@ -161,6 +165,7 @@ public class FishingMinigameManager : MonoBehaviour
         timeToChangeDirection = currentFish.wildness;
         directionChangeTimer = currentFish.wildness;
         ProgressionMultiplier = currentFish.fishWeight;
+        staminaMultiplier = currentFish.fishStaminaMultiplier;
 
         // Start de minigame
         isFishing = true;
@@ -195,7 +200,7 @@ public class FishingMinigameManager : MonoBehaviour
         else
         {
             playerController.enabled = true;
-            feedbackManager.ShowFeedback("The fish got away...", false);
+            feedbackManager.ShowFeedback("The fish got away...", true);
         }
     }
 
@@ -231,7 +236,7 @@ public class FishingMinigameManager : MonoBehaviour
         }
         else
         {
-            fishEffectText.text = "Effect: Geen";
+            fishEffectText.text = "Effect: None";
         }
 
         fishRarityText.text = fish.rarity.ToString();
@@ -331,6 +336,26 @@ public class FishingMinigameManager : MonoBehaviour
         if (input.sqrMagnitude > 1f)
         {
             input = input.normalized;
+        }
+
+        // Bereken daadwerkelijke verplaatsing deze frame (in UI units)
+        Vector2 moveDelta = input * hookMoveSpeed * Time.deltaTime;
+        float moveDistance = moveDelta.magnitude;
+
+        // Drain stamina op basis van hoe hard de hengel écht beweegt
+        // staminaMultiplier is de drain per (UI unit) beweging, pas aan naar wens
+        if (moveDistance > 0.0001f)
+        {
+            float drain = staminaMultiplier * moveDistance;
+            stamina -= drain;
+            stamina = Mathf.Clamp(stamina, 0f, maxStamina);
+            staminaBar.fillAmount = stamina / maxStamina;
+
+            if (stamina <= 0f)
+            {
+                EndFishingMinigame(false);
+                return;
+            }
         }
 
         // Bereken nieuwe positie

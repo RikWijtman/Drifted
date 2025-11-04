@@ -5,24 +5,14 @@ using System.Collections;
 
 public class HomeScreenManager : MonoBehaviour
 {
-    /*public void StartGame()
-    {
-        SceneManager.LoadScene("PeacefulWaters");
-    }
-
     public void QuitGame()
     {
         Application.Quit();
         Debug.Log("Game Closed"); 
-    }*/
+    }
     public BlinkManager blinkManager; // Verwijzing naar het knipper-effect
     public Button startButton; // Verwijzing naar de startknop
     public float sceneLoadDelay = 0.7f; // Tijd voordat scene wordt geladen
-
-    private void Start()
-    {
-       // startButton.onClick.AddListener(StartGame);
-    }
 
     public void StartGame()
     {
@@ -36,6 +26,6 @@ public class HomeScreenManager : MonoBehaviour
 
         yield return new WaitForSeconds(sceneLoadDelay); // Wacht totdat animatie klaar is
 
-        SceneManager.LoadScene("PeacefulWaters"); // Vervang met de naam van je game scene
+        SceneManager.LoadScene(0); // Vervang met de naam van je game scene
     }
 }

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585d7b8f954535d499e87af688019a4d, type: 3}
+  m_Name: Scroll_1_Day2
+  m_EditorClassIdentifier: 
+  itemName: -- Drifter's note Day 2 --
+  itemIcon: {fileID: 21300000, guid: b0f56b718a7f00e489843da48c95f60c, type: 3}
+  description: For anyone reading this, this is my second day at this small island.
+    I've been living of fish since there doesn't seem to grow anything else here,
+    and these cabbage like plants don't seem very tasty either. But there's an upside,
+    this statue on the island seems very friendly and wants to help me. He said he's
+    stuck here for quite some time now. I also found this strange stone with some
+    sort of hieroglyphs on it, but I don't think it's anything special. Hopefully
+    I will make it out here soon.
